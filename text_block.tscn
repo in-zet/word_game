@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://nm2gtxoavvia"]
+
+[sub_resource type="Gradient" id="Gradient_hqkgv"]
+colors = PackedColorArray(0.6666667, 0.6666667, 0.6666667, 1, 0.6666667, 0.6666667, 0.6666667, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6qx4q"]
+gradient = SubResource("Gradient_hqkgv")
+width = 128
+height = 128
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 0.03)
+
+[sub_resource type="Gradient" id="Gradient_h132h"]
+colors = PackedColorArray(0.8, 0.8, 0.8, 1, 0.8, 0.8, 0.8, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ejfcp"]
+gradient = SubResource("Gradient_h132h")
+width = 96
+height = 48
+fill_from = Vector2(0, 1)
+
+[node name="WordBlock" type="Node2D" unique_id=1237594867]
+
+[node name="WordBlockTexture" type="Sprite2D" parent="." unique_id=950826675]
+texture = SubResource("GradientTexture2D_6qx4q")
+
+[node name="WordTypeBlock" type="Sprite2D" parent="." unique_id=1894074710]
+position = Vector2(0, -26)
+texture = SubResource("GradientTexture2D_ejfcp")
+flip_v = true
+
+[node name="WordTypeText" type="Label" parent="WordTypeBlock" unique_id=1327318936]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "busa"
+horizontal_alignment = 1
+vertical_alignment = 1
