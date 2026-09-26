@@ -16,3 +16,6 @@ export_presets.cfg
 *.tmp
 .DS_Store
 Thumbs.db
+
+# 로컬 API 설정 (실제 URL 포함, 커밋 금지)
+local_config.cfg
