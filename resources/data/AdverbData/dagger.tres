@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AdverbDataResource" format=3 uid="uid://cfk6l4p76uq6y"]
+
+[ext_resource type="Script" uid="uid://38l664amyb0r" path="res://scripts/custom_resources/AdverbDataResource.gd" id="1_jxugc"]
+
+[resource]
+script = ExtResource("1_jxugc")
+adverbID = "dagger"
+haveBatchim = true

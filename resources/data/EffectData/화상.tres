@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EffectDataResource" format=3 uid="uid://yatglbts0oi"]
+
+[ext_resource type="Script" uid="uid://d3e124e7k4mie" path="res://scripts/custom_resources/EffectDataResource.gd" id="1_e4qcv"]
+
+[resource]
+script = ExtResource("1_e4qcv")
+effectID = "화상"
+interval = 1
