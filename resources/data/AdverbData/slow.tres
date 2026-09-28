@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AdverbDataResource" format=3]
+
+[ext_resource type="Script" uid="uid://38l664amyb0r" path="res://scripts/custom_resources/AdverbDataResource.gd" id="1_slow"]
+
+[resource]
+script = ExtResource("1_slow")
+adverbID = "slow"
+adverbType = 2
+coefficient = 0.0

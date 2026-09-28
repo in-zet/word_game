@@ -14,10 +14,15 @@ const MAX_CONNECTIVE_CHAIN := 5
 
 var player: Combatant
 var enemy: Combatant
-var enemy_pattern: PatternDataResource
+var enemy_patterns: Array[PatternDataResource]
+var enemy_pattern_weights: Array[int]
 var enemy_verb: VerbDataResource
 var enemy_weapon_id: String
 var rng: RandomNumberGenerator
+
+## 지금 진행 중인 문장(기본+이어진 문장)을 만들어낸 패턴 — 이어진 문장 확률(verbAppearRate) 판정에 쓰인다.
+## 새 기본 문장을 시작할 때마다 enemy_patterns 중에서 다시 뽑는다.
+var _active_pattern: PatternDataResource
 
 var phase: Phase = Phase.BATTLE_START
 var turn_no: int = 0
@@ -30,11 +35,14 @@ var _player_damage_accum: int = 0
 var _connective_chain: int = 0
 
 
-func _init(p_player: Combatant, p_enemy: Combatant, p_pattern: PatternDataResource,
-		p_verb: VerbDataResource, p_weapon_id: String, p_seed: int = 0) -> void:
+## p_patterns/p_pattern_weights는 EnemyData의 possessedPatternID/possessedPatternWeight에 대응한다.
+## 최소 1개는 있어야 한다 — 새 기본 문장을 시작할 때마다 이 중 하나를 가중치로 뽑는다.
+func _init(p_player: Combatant, p_enemy: Combatant, p_patterns: Array[PatternDataResource],
+		p_pattern_weights: Array[int], p_verb: VerbDataResource, p_weapon_id: String, p_seed: int = 0) -> void:
 	player = p_player
 	enemy = p_enemy
-	enemy_pattern = p_pattern
+	enemy_patterns = p_patterns
+	enemy_pattern_weights = p_pattern_weights
 	enemy_verb = p_verb
 	enemy_weapon_id = p_weapon_id
 	rng = RandomNumberGenerator.new()
@@ -51,9 +59,11 @@ func _load_enemy_sentence(is_connective: bool) -> void:
 		_enemy_sentence = PatternGenerator.generate_continuation(enemy_verb)
 	else:
 		_connective_chain = 0
-		var manner_id := PatternGenerator.roll_manner_adverb(enemy_pattern, rng)
+		var index := PatternGenerator.pick_weighted_index(enemy_pattern_weights, rng)
+		_active_pattern = enemy_patterns[index]
+		var manner_id := PatternGenerator.roll_manner_adverb(_active_pattern, rng)
 		_enemy_sentence = PatternGenerator.generate_base(
-			enemy_pattern.basicLineSubject, enemy_verb, enemy_weapon_id, manner_id)
+			_active_pattern.basicLineSubject, enemy_verb, enemy_weapon_id, manner_id)
 	sentence_loaded.emit("enemy", _enemy_sentence)
 
 
@@ -165,7 +175,7 @@ func _finish_enemy_sentence() -> void:
 	if _enemy_damage_accum > 0:
 		log_added.emit("%s 총 %d만큼의 피해를 줬다." % [Josa.i_ga(enemy.display_name), _enemy_damage_accum])
 	_enemy_damage_accum = 0
-	if _connective_chain < MAX_CONNECTIVE_CHAIN and PatternGenerator.roll_continuation(enemy_pattern, rng):
+	if _connective_chain < MAX_CONNECTIVE_CHAIN and PatternGenerator.roll_continuation(_active_pattern, rng):
 		_connective_chain += 1
 		_load_enemy_sentence(true)
 	else:

@@ -10,6 +10,8 @@ const VERB_TEXT := {
 const ADVERB_TEXT := {
 	"dagger": "단검으로",
 	"fast": "빠르게",
+	"strong": "강하게",
+	"slow": "천천히",
 }
 const CONNECTIVE_ADVERB_TEXT := "또"
 
@@ -51,20 +53,38 @@ static func generate_continuation(verb: VerbDataResource) -> Sentence:
 	return Sentence.new(eojeols)
 
 
-## ids[i]에 weights[i] 가중치를 매겨 하나를 뽑는다. 총 가중치가 0이거나 목록이 비면 빈 문자열.
-static func pick_weighted(ids: Array, weights: Array, rng: RandomNumberGenerator) -> String:
+## weights[i]에 비례한 확률로 index i를 하나 뽑는다. weights가 비었거나 총 가중치가 0이면 0.
+## ids/weights처럼 길이가 안 맞을 수 있는 두 배열을 다룰 때는 min(len)까지만 본다(방어적).
+static func pick_weighted_index(weights: Array, rng: RandomNumberGenerator) -> int:
+	if weights.is_empty():
+		return 0
 	var total := 0
 	for w in weights:
-		total += int(w)
-	if total <= 0 or ids.is_empty():
-		return ""
+		total += max(0, int(w))
+	if total <= 0:
+		return 0
 	var roll := rng.randi_range(1, total)
 	var acc := 0
-	for i in ids.size():
-		acc += int(weights[i])
+	for i in weights.size():
+		acc += max(0, int(weights[i]))
 		if roll <= acc:
-			return String(ids[i])
-	return String(ids[ids.size() - 1])
+			return i
+	return weights.size() - 1
+
+
+## ids[i]에 weights[i] 가중치를 매겨 하나를 뽑는다. 총 가중치가 0이거나 목록이 비면 빈 문자열
+## (pick_weighted_index와 달리 "뽑을 게 없다"를 빈 문자열로 명확히 구분해야 해서 총합을 직접 본다).
+static func pick_weighted(ids: Array, weights: Array, rng: RandomNumberGenerator) -> String:
+	var n: int = min(ids.size(), weights.size())
+	if n <= 0:
+		return ""
+	var trimmed_weights: Array = weights.slice(0, n)
+	var total := 0
+	for w in trimmed_weights:
+		total += max(0, int(w))
+	if total <= 0:
+		return ""
+	return String(ids[pick_weighted_index(trimmed_weights, rng)])
 
 
 ## 방식 부사어를 adverbAppearRate 확률로 뽑는다. 실패하거나 후보가 없으면 빈 문자열.

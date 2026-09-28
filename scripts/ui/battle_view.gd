@@ -108,11 +108,18 @@ func _start_battle() -> void:
 	var enemy_data: EnemyDataResource = load("res://resources/data/EnemyData/Goblin.tres")
 	var enemy := Combatant.new("고블린", enemy_data.healthPoint, enemy_data.strength,
 		enemy_data.dexterity, enemy_data.poise)
-	var pattern: PatternDataResource = load("res://resources/data/PatternData/GolbinPattern1.tres")
-	var verb: VerbDataResource = load("res://resources/data/VerbData/" + pattern.basicLineVerbID + ".tres")
+
+	# 고블린이 보유한 패턴들(possessedPatternID)을 전부 불러온다 — 문장을 새로 시작할 때마다
+	# possessedPatternWeight 가중치로 이 중 하나를 뽑아 쓴다(BattleManager._load_enemy_sentence).
+	var patterns: Array[PatternDataResource] = []
+	for pattern_id in enemy_data.possessedPatternID:
+		patterns.append(load("res://resources/data/PatternData/%s.tres" % pattern_id))
+	var pattern_weights: Array[int] = enemy_data.possessedPatternWeight
+
+	var verb: VerbDataResource = load("res://resources/data/VerbData/" + patterns[0].basicLineVerbID + ".tres")
 	var weapon_id: String = enemy_data.possessedWeaponID[0]
 
-	_battle = BattleManager.new(player, enemy, pattern, verb, weapon_id, randi())
+	_battle = BattleManager.new(player, enemy, patterns, pattern_weights, verb, weapon_id, randi())
 	_battle.sentence_loaded.connect(_on_sentence_loaded)
 	_battle.log_added.connect(_on_log_added)
 	_battle.turn_resolved.connect(_on_turn_resolved)
