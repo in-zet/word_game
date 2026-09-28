@@ -57,19 +57,26 @@ func _load_enemy_sentence(is_connective: bool) -> void:
 	sentence_loaded.emit("enemy", _enemy_sentence)
 
 
+## 플레이어의 진행 중인(선딜~서술어 사이) 문장이 아직 안 끝났으면 true.
+## UI는 이 값이 true인 동안 새 행동 선택지를 다시 보여주면 안 된다 — 완료 전까지는
+## 적 문장과 동일하게 기존 문장이 계속 진행되며, 새 제출은 무시된다.
+func has_pending_player_action() -> bool:
+	return _player_sentence != null and not _player_sentence.is_finished()
+
+
 ## 플레이어 행동을 예약한다. action_id가 빈 문자열이면 패스.
-## 이미 진행 중인(선딜~서술어 사이) 플레이어 문장이 있으면 그 문장을 유지하기 위해
-## 아무 것도 바꾸지 않고 true를 반환한다 (적 문장과 동일하게, 완료 전까지 새로 제출할 수 없다).
-## 쿨타임 중이거나 WAIT_INPUT이 아니면 false를 반환한다.
+## 이미 진행 중인 문장이 있으면 새 제출은 거부(false)한다 — 그 문장은 advance_turn()으로
+## 계속 진행시켜야 한다. 쿨타임 중이거나 WAIT_INPUT이 아니어도 false를 반환한다.
 func submit_player_action(action_id: String) -> bool:
 	if phase != Phase.WAIT_INPUT:
 		return false
-	if _player_sentence != null and not _player_sentence.is_finished():
-		return true
 	if action_id.is_empty():
-		_player_action_id = ""
-		_player_sentence = null
+		if not has_pending_player_action():
+			_player_action_id = ""
+			_player_sentence = null
 		return true
+	if has_pending_player_action():
+		return false
 	if not player.is_action_ready(action_id):
 		return false
 	var sentence := PlayerAction.build(action_id)
@@ -139,7 +146,9 @@ func _resolve_turn_effects(enemy_eojeol: Eojeol, player_eojeol: Eojeol) -> void:
 		enemy.take_damage(dealt2)
 		enemy.reduce_poise(DamageCalc.poise_loss(dealt2, enemy.max_hp, enemy.max_poise))
 		_player_damage_accum += dealt2
-		log_added.emit("%s %d만큼의 피해를 줬다." % [Josa.i_ga(enemy.display_name), dealt2])
+		var reduced2 := raw2 - dealt2
+		var suffix2 := (" (%d 데미지 감소)" % reduced2) if reduced2 > 0 else ""
+		log_added.emit("%s %d만큼의 피해를 받았다.%s" % [Josa.i_ga(enemy.display_name), dealt2, suffix2])
 
 
 ## 양쪽 다 HP 0이면(동시 사망) 패배로 간주한다 (스펙에 명시되지 않은 엣지케이스에 대한 임의 결정).
