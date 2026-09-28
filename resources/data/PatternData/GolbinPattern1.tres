@@ -12,4 +12,4 @@ appearableAdverbID = Array[String](["fast"])
 appearableAdverbWeight = Array[int]([1])
 verbAppearRate = 0.2
 appearableVerbID = Array[String](["hit"])
-appearableVerbWeight = Array[int]([0])
+appearableVerbWeight = Array[int]([1])

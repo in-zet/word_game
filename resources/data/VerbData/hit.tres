@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_av5ce")
 verbID = "hit"
+statBonusType = 1
 statBonusValue = 1.0
 haveBatchim = true
 coolDownTurn = 1

@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_1idj6")
 enemyID = "Goblin"
-strength = 10
-dexterity = 10
+strength = 8
+dexterity = 6
 intelligence = 10
 charmisma = 10
 healthPoint = 100

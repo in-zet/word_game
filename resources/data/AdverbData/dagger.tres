@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_jxugc")
 adverbID = "dagger"
+adverbType = 1
 haveBatchim = true

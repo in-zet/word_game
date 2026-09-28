@@ -5,4 +5,6 @@ extends RefCounted
 
 enum Value {
 	NONE,
+	STR,
+	DEX,
 }
