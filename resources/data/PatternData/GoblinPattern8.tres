@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PatternDataResource" format=3]
+
+[ext_resource type="Script" uid="uid://dhv7peddn5rxn" path="res://scripts/custom_resources/PatternDataResource.gd" id="1_p8"]
+
+[resource]
+script = ExtResource("1_p8")
+PatternID = "GoblinPattern8"
+basicLineSubject = "고블린"
+basicLineVerbID = "chop"
+adverbAppearRate = 0.7
+appearableAdverbID = Array[String](["sly"])
+appearableAdverbWeight = Array[int]([1])
+verbAppearRate = 0.2
+appearableVerbID = Array[String](["chop"])
+appearableVerbWeight = Array[int]([1])

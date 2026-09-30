@@ -6,12 +6,17 @@ extends RefCounted
 
 const VERB_TEXT := {
 	"hit": {"base": "찌른다.", "connective": "찌르고,"},
+	"slash": {"base": "벤다.", "connective": "베고,"},
+	"swing": {"base": "휘두른다.", "connective": "휘두르고,"},
+	"chop": {"base": "찍는다.", "connective": "찍고,"},
 }
 const ADVERB_TEXT := {
 	"dagger": "단검으로",
 	"fast": "빠르게",
 	"strong": "강하게",
 	"slow": "천천히",
+	"sly": "몰래",
+	"fierce": "사납게",
 }
 const CONNECTIVE_ADVERB_TEXT := "또"
 

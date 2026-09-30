@@ -132,10 +132,14 @@ func _start_battle() -> void:
 		patterns.append(load("res://resources/data/PatternData/%s.tres" % pattern_id))
 	var pattern_weights: Array[int] = enemy_data.possessedPatternWeight
 
-	var verb: VerbDataResource = load("res://resources/data/VerbData/" + patterns[0].basicLineVerbID + ".tres")
+	# 패턴마다 basicLineVerbID로 다른 서술어를 쓸 수 있으므로, 쓰이는 서술어를 전부 모아 둔다.
+	var verbs: Dictionary = {}
+	for p in patterns:
+		if not verbs.has(p.basicLineVerbID):
+			verbs[p.basicLineVerbID] = load("res://resources/data/VerbData/%s.tres" % p.basicLineVerbID)
 	var weapon_id: String = enemy_data.possessedWeaponID[0]
 
-	_battle = BattleManager.new(player, enemy, patterns, pattern_weights, verb, weapon_id, randi())
+	_battle = BattleManager.new(player, enemy, patterns, pattern_weights, verbs, weapon_id, randi())
 	_battle.sentence_loaded.connect(_on_sentence_loaded)
 	_battle.eojeol_revealed.connect(_on_eojeol_revealed)
 	_battle.log_added.connect(_on_log_added)

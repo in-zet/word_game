@@ -16,13 +16,15 @@ var player: Combatant
 var enemy: Combatant
 var enemy_patterns: Array[PatternDataResource]
 var enemy_pattern_weights: Array[int]
-var enemy_verb: VerbDataResource
+var enemy_verbs: Dictionary  ## verbID(String) -> VerbDataResource. 패턴마다 basicLineVerbID로 다른 서술어를 쓸 수 있다.
 var enemy_weapon_id: String
 var rng: RandomNumberGenerator
 
-## 지금 진행 중인 문장(기본+이어진 문장)을 만들어낸 패턴 — 이어진 문장 확률(verbAppearRate) 판정에 쓰인다.
-## 새 기본 문장을 시작할 때마다 enemy_patterns 중에서 다시 뽑는다.
+## 지금 진행 중인 문장(기본+이어진 문장)을 만들어낸 패턴/서술어 — 새 기본 문장을 시작할 때마다
+## enemy_patterns 중에서 다시 뽑고, 그 패턴의 basicLineVerbID로 enemy_verbs에서 서술어를 찾는다.
+## 이어진 문장도 같은 서술어를 그대로 쓴다.
 var _active_pattern: PatternDataResource
+var _active_verb: VerbDataResource
 
 var phase: Phase = Phase.BATTLE_START
 var turn_no: int = 0
@@ -35,15 +37,16 @@ var _player_damage_accum: int = 0
 var _connective_chain: int = 0
 
 
-## p_patterns/p_pattern_weights는 EnemyData의 possessedPatternID/possessedPatternWeight에 대응한다.
-## 최소 1개는 있어야 한다 — 새 기본 문장을 시작할 때마다 이 중 하나를 가중치로 뽑는다.
+## p_patterns/p_pattern_weights는 EnemyData의 possessedPatternID/possessedPatternWeight에 대응한다
+## (최소 1개는 있어야 한다). p_verbs는 p_patterns가 쓰는 모든 basicLineVerbID를 커버해야 한다 —
+## 커버하지 못하는 패턴이 뽑히면 그 시점에 KeyError로 바로 드러난다(조용히 틀린 서술어를 쓰지 않도록).
 func _init(p_player: Combatant, p_enemy: Combatant, p_patterns: Array[PatternDataResource],
-		p_pattern_weights: Array[int], p_verb: VerbDataResource, p_weapon_id: String, p_seed: int = 0) -> void:
+		p_pattern_weights: Array[int], p_verbs: Dictionary, p_weapon_id: String, p_seed: int = 0) -> void:
 	player = p_player
 	enemy = p_enemy
 	enemy_patterns = p_patterns
 	enemy_pattern_weights = p_pattern_weights
-	enemy_verb = p_verb
+	enemy_verbs = p_verbs
 	enemy_weapon_id = p_weapon_id
 	rng = RandomNumberGenerator.new()
 	rng.seed = p_seed
@@ -56,14 +59,15 @@ func start_battle() -> void:
 
 func _load_enemy_sentence(is_connective: bool) -> void:
 	if is_connective:
-		_enemy_sentence = PatternGenerator.generate_continuation(enemy_verb)
+		_enemy_sentence = PatternGenerator.generate_continuation(_active_verb)
 	else:
 		_connective_chain = 0
 		var index := PatternGenerator.pick_weighted_index(enemy_pattern_weights, rng)
 		_active_pattern = enemy_patterns[index]
+		_active_verb = enemy_verbs[_active_pattern.basicLineVerbID]
 		var manner_id := PatternGenerator.roll_manner_adverb(_active_pattern, rng)
 		_enemy_sentence = PatternGenerator.generate_base(
-			_active_pattern.basicLineSubject, enemy_verb, enemy_weapon_id, manner_id)
+			_active_pattern.basicLineSubject, _active_verb, enemy_weapon_id, manner_id)
 	sentence_loaded.emit("enemy", _enemy_sentence)
 
 

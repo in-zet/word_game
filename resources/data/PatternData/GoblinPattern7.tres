@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PatternDataResource" format=3]
+
+[ext_resource type="Script" uid="uid://dhv7peddn5rxn" path="res://scripts/custom_resources/PatternDataResource.gd" id="1_p7"]
+
+[resource]
+script = ExtResource("1_p7")
+PatternID = "GoblinPattern7"
+basicLineSubject = "고블린"
+basicLineVerbID = "swing"
+adverbAppearRate = 0.3
+appearableAdverbID = Array[String](["strong"])
+appearableAdverbWeight = Array[int]([1])
+verbAppearRate = 0.0
+appearableVerbID = Array[String](["swing"])
+appearableVerbWeight = Array[int]([1])

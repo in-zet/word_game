@@ -49,8 +49,9 @@ func _run() -> void:
 	var verb: VerbDataResource = load("res://resources/data/VerbData/hit.tres")
 	var patterns: Array[PatternDataResource] = [pattern]
 	var pattern_weights: Array[int] = [1]
+	var verbs: Dictionary = {"hit": verb}
 
-	var battle := BattleManager.new(player, enemy, patterns, pattern_weights, verb, "dagger", 42)
+	var battle := BattleManager.new(player, enemy, patterns, pattern_weights, verbs, "dagger", 42)
 	battle.log_added.connect(_on_log)
 	battle.battle_finished.connect(_on_finished)
 	battle.start_battle()
@@ -82,7 +83,7 @@ func _run() -> void:
 	# 진행 중인(선딜~서술어 사이) 행동에 새로 제출하면 거부되는지 확인
 	var p2 := Combatant.new("플레이어2", 100, 12, 10, 100)
 	var e2 := Combatant.new("고블린2", 100, 8, 6, 100)
-	var battle2 := BattleManager.new(p2, e2, patterns, pattern_weights, verb, "dagger", 1)
+	var battle2 := BattleManager.new(p2, e2, patterns, pattern_weights, verbs, "dagger", 1)
 	battle2.start_battle()
 	t.check("수비 제출 성공", battle2.submit_player_action(PlayerAction.DEFENSE_ID), true)
 	t.check("제출 직후 진행 중 상태", battle2.has_pending_player_action(), true)
@@ -102,7 +103,7 @@ func _run() -> void:
 	var always_chain_patterns: Array[PatternDataResource] = [always_chain_pattern]
 	var p3 := Combatant.new("플레이어3", 100000, 1, 1, 100000)
 	var e3 := Combatant.new("고블린3", 100000, 8, 6, 100000)
-	var battle3 := BattleManager.new(p3, e3, always_chain_patterns, pattern_weights, verb, "dagger", 7)
+	var battle3 := BattleManager.new(p3, e3, always_chain_patterns, pattern_weights, verbs, "dagger", 7)
 	battle3.sentence_loaded.connect(_on_chain_sentence_loaded)
 	battle3.start_battle()
 	var guard3 := 0

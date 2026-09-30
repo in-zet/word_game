@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="VerbDataResource" format=3]
+
+[ext_resource type="Script" uid="uid://c3pjgw6wv852v" path="res://scripts/custom_resources/VerbDataResource.gd" id="1_slash"]
+
+[resource]
+script = ExtResource("1_slash")
+verbID = "slash"
+statBonusType = 1
+statBonusValue = 0.8
+coolDownTurn = 1
