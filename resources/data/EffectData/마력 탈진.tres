@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EffectDataResource" format=3 uid="uid://bixv131jgyx38"]
+
+[ext_resource type="Script" uid="uid://d3e124e7k4mie" path="res://scripts/custom_resources/EffectDataResource.gd" id="1_xd7yx"]
+
+[resource]
+script = ExtResource("1_xd7yx")
+effectID = "마력 탈진"
+interval = 1

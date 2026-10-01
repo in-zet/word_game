@@ -1,0 +1,223 @@
+{
+  "EnemyData": {
+	"comment": {
+	  "enemyID": "적 ID",
+	  "strength": "근력",
+	  "dexterity": "민첩",
+	  "intelligence": "지능",
+	  "charmisma": "매력",
+	  "healthPoint": "체력",
+	  "poise": "강인도",
+	  "avoid": "회피율",
+	  "criticalRate": "치명타확률",
+	  "criticalDamage": "치명타피해",
+	  "lifeSteal": "생명력 흡수",
+	  "possessedPatternID": "보유 패턴 ID",
+	  "possessedPatternWeight": "보유 패턴 가중치",
+	  "possessedWeaponID": "보유 무기 ID"
+	},
+	"type": {
+	  "enemyID": "string",
+	  "strength": "int",
+	  "dexterity": "int",
+	  "intelligence": "int",
+	  "charmisma": "int",
+	  "healthPoint": "int",
+	  "poise": "int",
+	  "avoid": "float",
+	  "criticalRate": "float",
+	  "criticalDamage": "float",
+	  "lifeSteal": "float",
+	  "possessedPatternID": "List<string>",
+	  "possessedPatternWeight": "List<int>",
+	  "possessedWeaponID": "List<string>"
+	},
+	"data": [
+	  {
+		"enemyID": "Goblin",
+		"strength": 10,
+		"dexterity": 10,
+		"intelligence": 10,
+		"charmisma": 10,
+		"healthPoint": 100,
+		"poise": 100,
+		"avoid": 5,
+		"criticalRate": 10,
+		"criticalDamage": 10,
+		"lifeSteal": 0,
+		"possessedPatternID": [
+          "GolbinPattern1"
+		],
+		"possessedPatternWeight": [
+		  1
+		],
+		"possessedWeaponID": [
+          "dagger"
+		]
+	  }
+	]
+  },
+  "PatternData": {
+	"comment": {
+	  "PatternID": "패턴 ID",
+	  "basicLineSubject": "기본 문장의 주어",
+	  "basicLineVerbID": "기본 문장의 서술어 ID",
+	  "adverbAppearRate": "부사어 등장 확률",
+	  "appearableAdverbID": "등장 가능한 부사어 ID",
+	  "appearableAdverbWeight": "등장 가능한 부사어 가중치",
+	  "verbAppearRate": "이어진 서술어 등장 확률",
+	  "appearableVerbID": "등장 가능한 이어진 서술어 ID",
+	  "appearableVerbWeight": "등장 가능한 이어진 서술어 가중치"
+	},
+	"type": {
+	  "PatternID": "string",
+	  "basicLineSubject": "string",
+	  "basicLineVerbID": "string",
+	  "adverbAppearRate": "float",
+	  "appearableAdverbID": "List<string>",
+	  "appearableAdverbWeight": "List<int>",
+	  "verbAppearRate": "float",
+	  "appearableVerbID": "List<string>",
+	  "appearableVerbWeight": "List<int>"
+	},
+	"data": [
+	  {
+		"PatternID": "GolbinPattern1",
+		"basicLineSubject": "고블린",
+		"basicLineVerbID": "hit",
+		"adverbAppearRate": 0.8,
+		"appearableAdverbID": [
+          "fast"
+		],
+		"appearableAdverbWeight": [
+		  1
+		],
+		"verbAppearRate": 0.2,
+		"appearableVerbID": [
+          "hit"
+		],
+		"appearableVerbWeight": [
+		  0
+		]
+	  }
+	]
+  },
+  "VerbData": {
+	"comment": {
+	  "verbID": "서술어 ID",
+	  "statBonusType": "적용되는 능력치",
+	  "statBonusValue": "적용 능력치 계수",
+	  "haveBatchim": "받침 여부",
+	  "coolDownTurn": "쿨타임",
+	  "appliedEffectID": "적용되는 디버프 ID"
+	},
+	"type": {
+	  "verbID": "string",
+	  "statBonusType": "Enum<StatType>",
+	  "statBonusValue": "float",
+	  "haveBatchim": "bool",
+	  "coolDownTurn": "int",
+	  "appliedEffectID": "List<string>"
+	},
+	"data": [
+	  {
+		"verbID": "hit",
+		"statBonusType": "STR",
+		"statBonusValue": 1,
+		"haveBatchim": true,
+		"coolDownTurn": 1,
+		"appliedEffectID": []
+	  }
+	]
+  },
+  "AdverbData": {
+	"comment": {
+	  "adverbID": "부사어 ID",
+	  "adverbType": "부사어 Type",
+	  "coefficient": "적용 계수",
+	  "modifyRange": "수식 범위",
+	  "conflictingAdverb": "중복 불가 부사어 ID",
+	  "requirementAdverb": "생성시 필요 부사어 ID",
+	  "addtionalCreatedAdverb": "추가 생성 부사어 ID",
+	  "appliedEffectID": "적용되는 디버프 ID",
+	  "haveBatchim": "받침 여부"
+	},
+	"type": {
+	  "adverbID": "string",
+	  "adverbType": "Enum<AdverbType>",
+	  "coefficient": "float",
+	  "modifyRange": "Enum<Range>",
+	  "conflictingAdverb": "List<string>",
+	  "requirementAdverb": "List<string>",
+	  "addtionalCreatedAdverb": "List<string>",
+	  "appliedEffectID": "List<string>",
+	  "haveBatchim": "bool"
+	},
+	"data": [
+	  {
+		"adverbID": "fast",
+		"adverbType": "PERCENT_POINT",
+		"coefficient": 0.1,
+		"modifyRange": "TEXT",
+		"conflictingAdverb": [
+          "fast"
+		],
+		"requirementAdverb": [],
+		"addtionalCreatedAdverb": [],
+		"appliedEffectID": [],
+		"haveBatchim": false
+	  },
+	  {
+		"adverbID": "dagger",
+		"adverbType": "NONE",
+		"coefficient": null,
+		"modifyRange": null,
+		"conflictingAdverb": [],
+		"requirementAdverb": [],
+		"addtionalCreatedAdverb": [],
+		"appliedEffectID": [],
+		"haveBatchim": true
+	  }
+	]
+  },
+  "EffectData": {
+	"comment": {
+	  "effectID": "Effect ID",
+	  "triggerTiming": "발동 시점",
+	  "decayType": "발동시 감소 방식",
+	  "interval": "발동 주기"
+	},
+	"type": {
+	  "effectID": "string",
+	  "triggerTiming": "Enum<TriggerTimingType>",
+	  "decayType": "Enum<DecayType>",
+	  "interval": "int"
+	},
+	"data": [
+	  {
+		"effectID": "중독",
+		"triggerTiming": "TURN_INTERVAL",
+		"decayType": "MINUS_ONE",
+		"interval": 3
+	  },
+	  {
+		"effectID": "출혈",
+		"triggerTiming": "ON_VERB",
+		"decayType": "NONE",
+		"interval": 1
+	  },
+	  {
+		"effectID": "화상",
+		"triggerTiming": "SENTENCE_END",
+		"decayType": "HALVE",
+		"interval": 1
+	  },
+	  {
+		"effectID": "마력 탈진",
+		"triggerTiming": "TURN_START",
+		"decayType": "NONE",
+		"interval": 1
+	  }
+	]
+  }
+}

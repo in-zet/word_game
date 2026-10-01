@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AdverbDataResource" format=3 uid="uid://pbsy0xl6aakf"]
+
+[ext_resource type="Script" uid="uid://38l664amyb0r" path="res://scripts/custom_resources/AdverbDataResource.gd" id="1_g2ghd"]
+
+[resource]
+script = ExtResource("1_g2ghd")
+adverbID = "fast"
+coefficient = 0.1
+conflictingAdverb = Array[String](["fast"])

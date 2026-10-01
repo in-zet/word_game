@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyDataResource" format=3 uid="uid://bqau4d1g3tngi"]
+
+[ext_resource type="Script" uid="uid://da78726pu0wff" path="res://scripts/custom_resources/EnemyDataResource.gd" id="1_1idj6"]
+
+[resource]
+script = ExtResource("1_1idj6")
+enemyID = "Goblin"
+strength = 10
+dexterity = 10
+intelligence = 10
+charmisma = 10
+healthPoint = 100
+poise = 100
+avoid = 5.0
+criticalRate = 10.0
+criticalDamage = 10.0
+possessedPatternID = Array[String](["GolbinPattern1"])
+possessedPatternWeight = Array[int]([1])
+possessedWeaponID = Array[String](["dagger"])
