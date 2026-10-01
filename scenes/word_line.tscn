@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://ci1yrhtrhofvc"]
+
+[ext_resource type="Texture2D" uid="uid://uilhn1xd45eg" path="res://assets/텍스트 기반 로그라이크 rpg.png" id="1_v4jmd"]
+[ext_resource type="PackedScene" uid="uid://nm2gtxoavvia" path="res://scenes/word_block.tscn" id="2_nj8n4"]
+
+[node name="WordLine" type="Control" unique_id=1320794510]
+custom_minimum_size = Vector2(1016, 128)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+
+[node name="Arrow" type="TextureRect" parent="." unique_id=1009215129]
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("1_v4jmd")
+expand_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=376554333]
+layout_mode = 0
+offset_left = 160.0
+offset_right = 1016.0
+offset_bottom = 128.0
+horizontal_scroll_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer" unique_id=2016575539]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="WordBlock2" parent="ScrollContainer/HBoxContainer" unique_id=1644373815 instance=ExtResource("2_nj8n4")]
+layout_mode = 2
+
+[node name="WordBlock3" parent="ScrollContainer/HBoxContainer" unique_id=1252994438 instance=ExtResource("2_nj8n4")]
+layout_mode = 2

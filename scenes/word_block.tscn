@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://nm2gtxoavvia"]
+
+[ext_resource type="FontFile" uid="uid://dmmpdhla8su2g" path="res://assets/Galmuri11.ttf" id="1_arte7"]
+
+[sub_resource type="Gradient" id="Gradient_hqkgv"]
+colors = PackedColorArray(0.6666667, 0.6666667, 0.6666667, 1, 0.6666667, 0.6666667, 0.6666667, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6qx4q"]
+gradient = SubResource("Gradient_hqkgv")
+width = 128
+height = 128
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 0.03)
+
+[sub_resource type="Gradient" id="Gradient_h132h"]
+colors = PackedColorArray(0.8, 0.8, 0.8, 1, 0.8, 0.8, 0.8, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ejfcp"]
+gradient = SubResource("Gradient_h132h")
+width = 96
+height = 48
+fill_from = Vector2(0, 1)
+
+[node name="WordBlock" type="Control" unique_id=803452438]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+
+[node name="WordBlockTexture" type="TextureRect" parent="." unique_id=932243058]
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 128.0
+texture = SubResource("GradientTexture2D_6qx4q")
+
+[node name="WordText" type="Label" parent="WordBlockTexture" unique_id=956032989]
+layout_mode = 1
+offset_top = 72.0
+offset_right = 128.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_arte7")
+theme_override_font_sizes/font_size = 20
+text = "고불린이"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WordTypeBlock" type="TextureRect" parent="." unique_id=722010342]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 112.0
+offset_bottom = 64.0
+offset_transform_enabled = true
+texture = SubResource("GradientTexture2D_ejfcp")
+flip_v = true
+
+[node name="WordTypeText" type="Label" parent="WordTypeBlock" unique_id=1327318936]
+layout_mode = 1
+offset_right = 96.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_arte7")
+text = "NULL사"
+horizontal_alignment = 1
+vertical_alignment = 1
