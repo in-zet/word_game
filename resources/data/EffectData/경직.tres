@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EffectDataResource" format=3 uid="uid://cuiv8ylkpu3ta"]
+
+[ext_resource type="Script" uid="uid://d3e124e7k4mie" path="res://scripts/custom_resources/EffectDataResource.gd" id="1_obup1"]
+
+[resource]
+script = ExtResource("1_obup1")
+effectID = "경직"
+interval = 1

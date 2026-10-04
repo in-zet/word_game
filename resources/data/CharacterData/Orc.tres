@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterDataResource" format=3 uid="uid://jy264hgqdbrx"]
+
+[ext_resource type="Script" uid="uid://da78726pu0wff" path="res://scripts/custom_resources/CharacterDataResource.gd" id="1_sl8vy"]
+
+[resource]
+script = ExtResource("1_sl8vy")
+characterID = "Orc"
+strength = 18
+dexterity = 5
+intelligence = 4
+charmisma = 4
+healthPoint = 160
+poise = 200
+criticalRate = 5.0
+criticalDamage = 20.0
+patternID = Array[String](["OrcPattern1"])
+patternWeight = Array[int]([1])
+weaponID = Array[String](["거대한 망치"])

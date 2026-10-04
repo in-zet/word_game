@@ -1,9 +1,9 @@
-class_name EnemyDataResource
+class_name CharacterDataResource
 extends Resource
 ## 자동 생성된 파일입니다. Google Sheets 구조가 바뀌면 생성 스크립트를 다시 실행해서 갱신하세요.
 
-## 적 ID (원본 컬럼: enemyID)
-@export var enemyID: String = ""
+## 적 ID (원본 컬럼: characterID)
+@export var characterID: String = ""
 
 ## 근력 (원본 컬럼: strength)
 @export var strength: int = 0
@@ -35,11 +35,11 @@ extends Resource
 ## 생명력 흡수 (원본 컬럼: lifeSteal)
 @export var lifeSteal: float = 0.0
 
-## 보유 패턴 ID (원본 컬럼: possessedPatternID)
-@export var possessedPatternID: Array[String] = []
+## 보유 패턴 ID (원본 컬럼: patternID)
+@export var patternID: Array[String] = []
 
-## 보유 패턴 가중치 (원본 컬럼: possessedPatternWeight)
-@export var possessedPatternWeight: Array[int] = []
+## 보유 패턴 가중치 (원본 컬럼: patternWeight)
+@export var patternWeight: Array[int] = []
 
-## 보유 무기 ID (원본 컬럼: possessedWeaponID)
-@export var possessedWeaponID: Array[String] = []
+## 보유 무기 ID (원본 컬럼: weaponID)
+@export var weaponID: Array[String] = []

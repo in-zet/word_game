@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PatternDataResource" format=3 uid="uid://cxhi2gas8dvsu"]
+
+[ext_resource type="Script" uid="uid://dhv7peddn5rxn" path="res://scripts/custom_resources/PatternDataResource.gd" id="1_223mb"]
+
+[resource]
+script = ExtResource("1_223mb")
+PatternID = "GoblinPattern3"
+basicLineSubject = "고블린"
+basicLineVerbID = "taunt"
+adverbAppearRate = 0.7
+appearableAdverbID = Array[String](["조롱하며"])
+appearableAdverbWeight = Array[int]([1])
+verbAppearRate = 0.3
+appearableVerbID = Array[String](["hit"])
+appearableVerbWeight = Array[int]([1])

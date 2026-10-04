@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c2jj7juxymwsj"]
+
+[ext_resource type="Script" uid="uid://bb1mi1qnyg0sj" path="res://scripts/core/character.gd" id="1_g7g4h"]
+[ext_resource type="Resource" uid="uid://bqjqj4paxjt5f" path="res://resources/data/CharacterData/Goblin.tres" id="2_j8ivh"]
+
+[node name="TestScene" type="Node" unique_id=1536255534]
+
+[node name="Character" type="Node" parent="." unique_id=1328590120]
+script = ExtResource("1_g7g4h")
+stat = ExtResource("2_j8ivh")

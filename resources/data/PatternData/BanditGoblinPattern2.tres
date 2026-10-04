@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PatternDataResource" format=3 uid="uid://cke1x86l7fkvp"]
+
+[ext_resource type="Script" uid="uid://dhv7peddn5rxn" path="res://scripts/custom_resources/PatternDataResource.gd" id="1_tb0jp"]
+
+[resource]
+script = ExtResource("1_tb0jp")
+PatternID = "BanditGoblinPattern2"
+basicLineSubject = "도적 고블린"
+basicLineVerbID = "slash"
+adverbAppearRate = 0.8
+appearableAdverbID = Array[String](["정확하게", "날카롭게", "fast"])
+appearableAdverbWeight = Array[int]([1])
+verbAppearRate = 0.2
+appearableVerbID = Array[String](["slash"])
+appearableVerbWeight = Array[int]([1])

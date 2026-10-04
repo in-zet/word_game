@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AdverbDataResource" format=3 uid="uid://brjnpbm3bhg5m"]
+
+[ext_resource type="Script" uid="uid://38l664amyb0r" path="res://scripts/custom_resources/AdverbDataResource.gd" id="1_qgdx1"]
+
+[resource]
+script = ExtResource("1_qgdx1")
+adverbID = "정확하게"
+coefficient = 0.1

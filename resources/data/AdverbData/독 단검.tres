@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AdverbDataResource" format=3 uid="uid://h2ol7gj5jnj0"]
+
+[ext_resource type="Script" uid="uid://38l664amyb0r" path="res://scripts/custom_resources/AdverbDataResource.gd" id="1_smyia"]
+
+[resource]
+script = ExtResource("1_smyia")
+adverbID = "독 단검"
+appliedEffectID = Array[String](["중독"])
+haveBatchim = true

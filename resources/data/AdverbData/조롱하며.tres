@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AdverbDataResource" format=3 uid="uid://ceuuaqkgs6jgn"]
+
+[ext_resource type="Script" uid="uid://38l664amyb0r" path="res://scripts/custom_resources/AdverbDataResource.gd" id="1_qjnon"]
+
+[resource]
+script = ExtResource("1_qjnon")
+adverbID = "조롱하며"
+appliedEffectID = Array[String](["경직"])

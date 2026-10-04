@@ -28,8 +28,11 @@ const RangeType = preload("res://scripts/enums/range_type.gd")
 ## 추가 생성 부사어 ID (원본 컬럼: addtionalCreatedAdverb)
 @export var addtionalCreatedAdverb: Array[String] = []
 
-## 적용되는 디버프 ID (원본 컬럼: appliedEffectID)
+## 대상에게 적용되는 디버프 ID (원본 컬럼: appliedEffectID)
 @export var appliedEffectID: Array[String] = []
+
+## 대상에게 적용되는 디버프 수치 (원본 컬럼: appliedEffectValue)
+@export var appliedEffectValue: Array[float] = []
 
 ## 받침 여부 (원본 컬럼: haveBatchim)
 @export var haveBatchim: bool = false

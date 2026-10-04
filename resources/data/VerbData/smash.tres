@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="VerbDataResource" format=3 uid="uid://cbe4034gf075"]
+
+[ext_resource type="Script" uid="uid://c3pjgw6wv852v" path="res://scripts/custom_resources/VerbDataResource.gd" id="1_r2gia"]
+
+[resource]
+script = ExtResource("1_r2gia")
+verbID = "smash"
+statBonusValue = 1.8
+haveBatchim = true
+coolDownTurn = 3

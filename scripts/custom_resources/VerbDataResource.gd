@@ -20,5 +20,11 @@ const StatType = preload("res://scripts/enums/stat_type.gd")
 ## 쿨타임 (원본 컬럼: coolDownTurn)
 @export var coolDownTurn: int = 0
 
-## 적용되는 디버프 ID (원본 컬럼: appliedEffectID)
+## 시전자에게 적용되는 디버프 ID (원본 컬럼: appliedEffectID)
 @export var appliedEffectID: Array[String] = []
+
+## 시전자에게 적용되는 디버프 수치 (원본 컬럼: appliedEffectValue)
+@export var appliedEffectValue: Array[float] = []
+
+## 강인도 피해 배율 (원본 컬럼: poiseDamageRate)
+@export var poiseDamageRate: float = 0.0

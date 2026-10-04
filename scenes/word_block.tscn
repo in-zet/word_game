@@ -13,15 +13,6 @@ height = 128
 fill_from = Vector2(0, 1)
 fill_to = Vector2(1, 0.03)
 
-[sub_resource type="Gradient" id="Gradient_h132h"]
-colors = PackedColorArray(0.8, 0.8, 0.8, 1, 0.8, 0.8, 0.8, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ejfcp"]
-gradient = SubResource("Gradient_h132h")
-width = 96
-height = 48
-fill_from = Vector2(0, 1)
-
 [node name="WordBlock" type="Control" unique_id=803452438]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 3
@@ -45,26 +36,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_arte7")
 theme_override_font_sizes/font_size = 20
 text = "고불린이"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="WordTypeBlock" type="TextureRect" parent="." unique_id=722010342]
-layout_mode = 1
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 112.0
-offset_bottom = 64.0
-offset_transform_enabled = true
-texture = SubResource("GradientTexture2D_ejfcp")
-flip_v = true
-
-[node name="WordTypeText" type="Label" parent="WordTypeBlock" unique_id=1327318936]
-layout_mode = 1
-offset_right = 96.0
-offset_bottom = 48.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_arte7")
-text = "NULL사"
 horizontal_alignment = 1
 vertical_alignment = 1
 

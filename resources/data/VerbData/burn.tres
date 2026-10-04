@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="VerbDataResource" format=3 uid="uid://6r56chat5nvt"]
+
+[ext_resource type="Script" uid="uid://c3pjgw6wv852v" path="res://scripts/custom_resources/VerbDataResource.gd" id="1_er7nh"]
+
+[resource]
+script = ExtResource("1_er7nh")
+verbID = "burn"
+statBonusValue = 1.2
+haveBatchim = true
+coolDownTurn = 1
+appliedEffectID = Array[String](["마력 탈진"])

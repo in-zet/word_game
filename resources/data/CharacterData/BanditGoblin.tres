@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CharacterDataResource" format=3 uid="uid://w7xehcktkxjw"]
+
+[ext_resource type="Script" uid="uid://da78726pu0wff" path="res://scripts/custom_resources/CharacterDataResource.gd" id="1_su3ew"]
+
+[resource]
+script = ExtResource("1_su3ew")
+characterID = "BanditGoblin"
+strength = 8
+dexterity = 14
+intelligence = 6
+charmisma = 6
+healthPoint = 80
+poise = 60
+avoid = 15.0
+criticalRate = 10.0
+criticalDamage = 10.0
+patternID = Array[String](["BanditGoblinPattern1"])
+patternWeight = Array[int]([1])
+weaponID = Array[String](["dagger"])

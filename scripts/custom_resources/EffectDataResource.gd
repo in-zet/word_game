@@ -4,6 +4,7 @@ extends Resource
 
 const TriggerTimingType = preload("res://scripts/enums/trigger_timing_type.gd")
 const DecayType = preload("res://scripts/enums/decay_type.gd")
+const StackRuleType = preload("res://scripts/enums/stack_rule_type.gd")
 
 ## Effect ID (원본 컬럼: effectID)
 @export var effectID: String = ""
@@ -18,3 +19,7 @@ const DecayType = preload("res://scripts/enums/decay_type.gd")
 
 ## 발동 주기 (원본 컬럼: interval)
 @export var interval: int = 0
+
+## 중첩 방식 (원본 컬럼: stackRule)
+## 값 목록 (res://scripts/enums/stack_rule_type.gd): NONE
+@export var stackRule: StackRuleType.Value = StackRuleType.Value.NONE

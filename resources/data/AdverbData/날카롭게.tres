@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AdverbDataResource" format=3 uid="uid://dk8morsjxctn7"]
+
+[ext_resource type="Script" uid="uid://38l664amyb0r" path="res://scripts/custom_resources/AdverbDataResource.gd" id="1_qybke"]
+
+[resource]
+script = ExtResource("1_qybke")
+adverbID = "날카롭게"
+appliedEffectID = Array[String](["출혈"])

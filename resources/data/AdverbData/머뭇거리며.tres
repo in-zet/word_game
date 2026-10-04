@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AdverbDataResource" format=3 uid="uid://dhdqp8vpvtmep"]
+
+[ext_resource type="Script" uid="uid://38l664amyb0r" path="res://scripts/custom_resources/AdverbDataResource.gd" id="1_g04y6"]
+
+[resource]
+script = ExtResource("1_g04y6")
+adverbID = "머뭇거리며"
+coefficient = -0.2

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AdverbDataResource" format=3 uid="uid://cislb4fb40f85"]
+
+[ext_resource type="Script" uid="uid://38l664amyb0r" path="res://scripts/custom_resources/AdverbDataResource.gd" id="1_t1rmc"]
+
+[resource]
+script = ExtResource("1_t1rmc")
+adverbID = "톱날 단검"
+appliedEffectID = Array[String](["출혈"])
+haveBatchim = true

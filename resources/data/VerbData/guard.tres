@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="VerbDataResource" format=3 uid="uid://4tp1snollq0u"]
+
+[ext_resource type="Script" uid="uid://c3pjgw6wv852v" path="res://scripts/custom_resources/VerbDataResource.gd" id="1_g1ym4"]
+
+[resource]
+script = ExtResource("1_g1ym4")
+verbID = "guard"
+statBonusValue = 1.0
+haveBatchim = true
+coolDownTurn = 2

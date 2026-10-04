@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="VerbDataResource" format=3 uid="uid://bntyw5q8dyrtn"]
+
+[ext_resource type="Script" uid="uid://c3pjgw6wv852v" path="res://scripts/custom_resources/VerbDataResource.gd" id="1_l4l7e"]
+
+[resource]
+script = ExtResource("1_l4l7e")
+verbID = "taunt"
+statBonusValue = 0.5
+haveBatchim = true
+coolDownTurn = 2

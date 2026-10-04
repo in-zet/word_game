@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dupp6ky4a1wlk"]
 
-[ext_resource type="Script" uid="uid://dautv5h1ufyjx" path="res://scenes/battle_manager.gd" id="1_dn72j"]
-[ext_resource type="Script" uid="uid://ckku2corxhfjd" path="res://scenes/display_manager.gd" id="2_th188"]
+[ext_resource type="Script" uid="uid://dautv5h1ufyjx" path="res://scripts/Managers/battle_manager.gd" id="1_dn72j"]
+[ext_resource type="Script" uid="uid://j3yqfd54tqit" path="res://scripts/Managers/battle_manager_data.gd" id="2_p1qf1"]
+[ext_resource type="Script" uid="uid://ckku2corxhfjd" path="res://scripts/Managers/display_manager.gd" id="2_th188"]
 
 [node name="Battle" type="Control" unique_id=1185440440]
 layout_mode = 3
@@ -10,6 +11,10 @@ anchors_preset = 0
 [node name="BattleManager" type="Node" parent="." unique_id=1309546440]
 unique_name_in_owner = true
 script = ExtResource("1_dn72j")
+
+[node name="BattleManagerData" type="Node" parent="BattleManager" unique_id=349505655]
+unique_name_in_owner = true
+script = ExtResource("2_p1qf1")
 
 [node name="DisplayManager" type="Node" parent="." unique_id=970263675]
 unique_name_in_owner = true

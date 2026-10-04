@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PatternDataResource" format=3 uid="uid://dyqwiog7vwy8m"]
+
+[ext_resource type="Script" uid="uid://dhv7peddn5rxn" path="res://scripts/custom_resources/PatternDataResource.gd" id="1_l3kb2"]
+
+[resource]
+script = ExtResource("1_l3kb2")
+PatternID = "OrcPattern1"
+basicLineSubject = "오크"
+basicLineVerbID = "smash"
+adverbAppearRate = 0.9
+appearableAdverbID = Array[String](["강하게"])
+appearableAdverbWeight = Array[int]([1])

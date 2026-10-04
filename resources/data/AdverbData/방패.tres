@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="AdverbDataResource" format=3 uid="uid://c1r6lf7meurkh"]
+
+[ext_resource type="Script" uid="uid://38l664amyb0r" path="res://scripts/custom_resources/AdverbDataResource.gd" id="1_p3q3m"]
+
+[resource]
+script = ExtResource("1_p3q3m")
+adverbID = "방패"
