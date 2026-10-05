@@ -10,7 +10,11 @@ var data_dict: Dictionary[RangeType.Value, BehaveStateData] = {
 
 func execute(word: BaseWord):
 	if word is Adverb:
-		var av_word := word as Adverb
-		var target_data := data_dict[av_word.data.modifyRange]
+		var av_word_data: AdverbDataResource = word.data
+		var target_data: BehaveStateData = data_dict[av_word_data.modifyRange]
 		
 		# target_data에 av_word.data랑 더하기 
+		
+		match av_word_data.adverbType:
+			AdverbType.Value.NONE:
+				target_data.coef_modifier += av_word_data.coefficient
