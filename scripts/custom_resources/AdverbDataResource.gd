@@ -17,7 +17,7 @@ const RangeType = preload("res://scripts/enums/range_type.gd")
 
 ## 수식 범위 (원본 컬럼: modifyRange)
 ## 값 목록 (res://scripts/enums/range_type.gd): NONE
-@export var modifyRange: RangeType.Value = RangeType.Value.NONE
+@export var modifyRange: RangeType.Value = RangeType.Value.TEXT
 
 ## 중복 불가 부사어 ID (원본 컬럼: conflictingAdverb)
 @export var conflictingAdverb: Array[String] = []

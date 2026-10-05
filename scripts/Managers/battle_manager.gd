@@ -7,6 +7,7 @@ extends Node
 
 func battle_init():
 	display_manager.display_init()
+	# player init
 
 
 func battle_start(enemy_set):
@@ -15,14 +16,10 @@ func battle_start(enemy_set):
 
 
 func line_start():
-	load_line()
-
-
-func load_line():
+	# line load
+	# view update
 	pass
 
-
-func 
 
 
 func _on_turn_timer_timeout() -> void:
