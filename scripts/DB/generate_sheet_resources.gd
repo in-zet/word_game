@@ -157,7 +157,7 @@ func _process_sheet(sheet_name: String, sheet_obj: Variant) -> void:
 		var row_instance: Resource = resource_script.new()
 		for field in fields:
 			var raw_value: Variant = row_dict.get(field.original_header, null)
-			row_instance.set(field.field_name, _coerce_value(raw_value, field))
+			row_instance.set(field.field_name, _coerce_value(raw_value, field, row_instance))
 
 		var id_raw: Variant = row_dict.get(id_field.original_header, null)
 		var id_value: Variant = _coerce_single_by_field(id_raw, id_field)
@@ -509,9 +509,9 @@ func _map_scalar_type(type_str: String) -> Dictionary:
 ## 배열 필드는 Array[String]처럼 타입이 지정되어 있어서, 일반(untyped) Array를 그대로
 ## set()하면 타입이 안 맞아 에러 없이 조용히 무시됩니다. 그래서 Array 생성자로
 ## 실제 요소 타입을 명시한 typed array를 만들어서 반환합니다.
-func _coerce_value(raw_value: Variant, field: Dictionary) -> Variant:
+func _coerce_value(raw_value: Variant, field: Dictionary, row_instance: Resource) -> Variant:
 	if field.get("is_struct", false):
-		return _coerce_struct_array(raw_value, field)
+		return _coerce_struct_array(raw_value, field, row_instance)
 	if field.is_array:
 		var out: Array = []
 		if typeof(raw_value) == TYPE_ARRAY:
@@ -522,11 +522,13 @@ func _coerce_value(raw_value: Variant, field: Dictionary) -> Variant:
 
 
 ## JSON의 [{"id": "fast", "weight": 1}, ...] 형태 배열을 struct 인스턴스 배열로 변환합니다.
-## (Resource를 담는 typed array라서, Array(값, TYPE_OBJECT, 클래스명, 스크립트)로 만들어야
-## @export var x: Array[StructName] 의 실제 타입과 맞고 .tres에도 서브리소스로 제대로 저장됩니다.)
-func _coerce_struct_array(raw_value: Variant, field: Dictionary) -> Array:
+## row_instance의 해당 필드가 이미 "Array[StructName] = []"로 선언되어 있어서, 그 기본값
+## 자체가 GDScript 컴파일러가 만들어준 정확한 타입의 빈 배열입니다. 수동으로 Array(...)를
+## 다시 만들면 @export가 기대하는 타입과 안 맞아 set()이 조용히 무시될 수 있으므로,
+## 그 기본값을 그대로 가져와 append()만 해서(타입 배열 자체 검증을 그대로 타게) 채웁니다.
+func _coerce_struct_array(raw_value: Variant, field: Dictionary, row_instance: Resource) -> Array:
 	var struct_script: Script = load(_struct_file_path(field.struct_name))
-	var out: Array = []
+	var out: Array = row_instance.get(field.field_name)
 	if typeof(raw_value) == TYPE_ARRAY:
 		for item in (raw_value as Array):
 			if typeof(item) != TYPE_DICTIONARY:
@@ -537,7 +539,7 @@ func _coerce_struct_array(raw_value: Variant, field: Dictionary) -> Array:
 				var raw_member_value: Variant = item_dict.get(member.original_header, null)
 				instance.set(member.field_name, _coerce_scalar(raw_member_value, member.elem_kind))
 			out.append(instance)
-	return Array(out, TYPE_OBJECT, &"Resource", struct_script)
+	return out
 
 
 ## values를 field의 elem_kind에 맞는 typed Array로 다시 만들어서 반환합니다.
