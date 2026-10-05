@@ -1,9 +1,15 @@
 [gd_resource type="Resource" script_class="CharacterDataResource" format=3 uid="uid://w7xehcktkxjw"]
 
-[ext_resource type="Script" uid="uid://da78726pu0wff" path="res://scripts/custom_resources/CharacterDataResource.gd" id="1_su3ew"]
+[ext_resource type="Script" uid="uid://bkrcw1tu75s50" path="res://scripts/structs/pattern_struct.gd" id="1_156uy"]
+[ext_resource type="Script" uid="uid://da78726pu0wff" path="res://scripts/custom_resources/CharacterDataResource.gd" id="2_prwi6"]
+
+[sub_resource type="Resource" id="Resource_naew7"]
+script = ExtResource("1_156uy")
+id = "BanditGoblinPattern1"
+weight = 1
 
 [resource]
-script = ExtResource("1_su3ew")
+script = ExtResource("2_prwi6")
 characterID = "BanditGoblin"
 strength = 8
 dexterity = 14
@@ -14,6 +20,5 @@ poise = 60
 avoid = 15.0
 criticalRate = 10.0
 criticalDamage = 10.0
-patternID = Array[String](["BanditGoblinPattern1"])
-patternWeight = Array[int]([1])
+pattern = Array[ExtResource("1_156uy")]([SubResource("Resource_naew7")])
 weaponID = Array[String](["dagger"])

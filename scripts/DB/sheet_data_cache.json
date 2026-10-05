@@ -1,745 +1,743 @@
 {
   "CharacterData": {
-	"comment": {
-	  "characterID": "적 ID",
-	  "strength": "근력",
-	  "dexterity": "민첩",
-	  "intelligence": "지능",
-	  "charmisma": "매력",
-	  "healthPoint": "체력",
-	  "poise": "강인도",
-	  "avoid": "회피율",
-	  "criticalRate": "치명타확률",
-	  "criticalDamage": "치명타피해",
-	  "lifeSteal": "생명력 흡수",
-	  "patternID": "보유 패턴 ID",
-	  "patternWeight": "보유 패턴 가중치",
-	  "weaponID": "보유 무기 ID"
-	},
-	"type": {
-	  "characterID": "string",
-	  "strength": "int",
-	  "dexterity": "int",
-	  "intelligence": "int",
-	  "charmisma": "int",
-	  "healthPoint": "int",
-	  "poise": "int",
-	  "avoid": "float",
-	  "criticalRate": "float",
-	  "criticalDamage": "float",
-	  "lifeSteal": "float",
-	  "patternID": "List<string>",
-	  "patternWeight": "List<int>",
-	  "weaponID": "List<string>"
-	},
-	"data": [
-	  {
-		"characterID": "Goblin",
-		"strength": 10,
-		"dexterity": 10,
-		"intelligence": 10,
-		"charmisma": 10,
-		"healthPoint": 100,
-		"poise": 100,
-		"avoid": 5,
-		"criticalRate": 10,
-		"criticalDamage": 10,
-		"lifeSteal": 0,
-		"patternID": [
-          "GolbinPattern1"
-		],
-		"patternWeight": [
-		  1
-		],
-		"weaponID": [
+    "comment": {
+      "characterID": "적 ID",
+      "strength": "근력",
+      "dexterity": "민첩",
+      "intelligence": "지능",
+      "charmisma": "매력",
+      "healthPoint": "체력",
+      "poise": "강인도",
+      "avoid": "회피율",
+      "criticalRate": "치명타확률",
+      "criticalDamage": "치명타피해",
+      "lifeSteal": "생명력 흡수",
+      "pattern": "보유 패턴 ID",
+      "weaponID": "보유 무기 ID"
+    },
+    "type": {
+      "characterID": "string",
+      "strength": "int",
+      "dexterity": "int",
+      "intelligence": "int",
+      "charmisma": "int",
+      "healthPoint": "int",
+      "poise": "int",
+      "avoid": "float",
+      "criticalRate": "float",
+      "criticalDamage": "float",
+      "lifeSteal": "float",
+      "pattern": "List<Struct(id:string,weight:int)>",
+      "weaponID": "List<string>"
+    },
+    "data": [
+      {
+        "characterID": "Goblin",
+        "strength": 10,
+        "dexterity": 10,
+        "intelligence": 10,
+        "charmisma": 10,
+        "healthPoint": 100,
+        "poise": 100,
+        "avoid": 5,
+        "criticalRate": 10,
+        "criticalDamage": 10,
+        "lifeSteal": 0,
+        "pattern": [
+          {
+            "id": "GolbinPattern1",
+            "weight": 1
+          }
+        ],
+        "weaponID": [
           "dagger"
-		]
-	  },
-	  {
-		"characterID": "BanditGoblin",
-		"strength": 8,
-		"dexterity": 14,
-		"intelligence": 6,
-		"charmisma": 6,
-		"healthPoint": 80,
-		"poise": 60,
-		"avoid": 15,
-		"criticalRate": 10,
-		"criticalDamage": 10,
-		"lifeSteal": 0,
-		"patternID": [
-          "BanditGoblinPattern1"
-		],
-		"patternWeight": [
-		  1
-		],
-		"weaponID": [
+        ]
+      },
+      {
+        "characterID": "BanditGoblin",
+        "strength": 8,
+        "dexterity": 14,
+        "intelligence": 6,
+        "charmisma": 6,
+        "healthPoint": 80,
+        "poise": 60,
+        "avoid": 15,
+        "criticalRate": 10,
+        "criticalDamage": 10,
+        "lifeSteal": 0,
+        "pattern": [
+          {
+            "id": "BanditGoblinPattern1",
+            "weight": 1
+          }
+        ],
+        "weaponID": [
           "dagger"
-		]
-	  },
-	  {
-		"characterID": "Orc",
-		"strength": 18,
-		"dexterity": 5,
-		"intelligence": 4,
-		"charmisma": 4,
-		"healthPoint": 160,
-		"poise": 200,
-		"avoid": 0,
-		"criticalRate": 5,
-		"criticalDamage": 20,
-		"lifeSteal": 0,
-		"patternID": [
-          "OrcPattern1"
-		],
-		"patternWeight": [
-		  1
-		],
-		"weaponID": [
+        ]
+      },
+      {
+        "characterID": "Orc",
+        "strength": 18,
+        "dexterity": 5,
+        "intelligence": 4,
+        "charmisma": 4,
+        "healthPoint": 160,
+        "poise": 200,
+        "avoid": 0,
+        "criticalRate": 5,
+        "criticalDamage": 20,
+        "lifeSteal": 0,
+        "pattern": [
+          {
+            "id": "OrcPattern1",
+            "weight": 1
+          }
+        ],
+        "weaponID": [
           "거대한 망치"
-		]
-	  }
-	]
+        ]
+      }
+    ]
   },
   "SkillData": {
-	"comment": {
-	  "skillID": "스킬 ID",
-	  "verbID": "스킬의 서술어 ID",
-	  "cooldown": "쿨타임"
-	},
-	"type": {
-	  "skillID": "string",
-	  "verbID": "string",
-	  "cooldown": "int"
-	},
-	"data": [
-	  {
-		"skillID": "hit",
-		"verbID": "hit",
-		"cooldown": 2
-	  },
-	  {
-		"skillID": "slash",
-		"verbID": "slash",
-		"cooldown": 2
-	  },
-	  {
-		"skillID": "burn",
-		"verbID": "burn",
-		"cooldown": 2
-	  },
-	  {
-		"skillID": "smash",
-		"verbID": "smash",
-		"cooldown": 4
-	  },
-	  {
-		"skillID": "taunt",
-		"verbID": "taunt",
-		"cooldown": 3
-	  },
-	  {
-		"skillID": "guard",
-		"verbID": "guard",
-		"cooldown": 3
-	  }
-	]
+    "comment": {
+      "skillID": "스킬 ID",
+      "verbID": "스킬의 서술어 ID",
+      "cooldown": "쿨타임"
+    },
+    "type": {
+      "skillID": "string",
+      "verbID": "string",
+      "cooldown": "int"
+    },
+    "data": [
+      {
+        "skillID": "hit",
+        "verbID": "hit",
+        "cooldown": 2
+      },
+      {
+        "skillID": "slash",
+        "verbID": "slash",
+        "cooldown": 2
+      },
+      {
+        "skillID": "burn",
+        "verbID": "burn",
+        "cooldown": 2
+      },
+      {
+        "skillID": "smash",
+        "verbID": "smash",
+        "cooldown": 4
+      },
+      {
+        "skillID": "taunt",
+        "verbID": "taunt",
+        "cooldown": 3
+      },
+      {
+        "skillID": "guard",
+        "verbID": "guard",
+        "cooldown": 3
+      }
+    ]
   },
   "EquipmentData ": {
-	"comment": {
-	  "equipmentID": "장비 ID",
-	  "Rarity": "아이템 등급",
-	  "input": "아이템 효과 숫자"
-	},
-	"type": {
-	  "equipmentID": "string",
-	  "Rarity": "Enum<Rarity>",
-	  "input": "List<float>"
-	},
-	"data": [
-	  {
-		"equipmentID": "독 단검",
-		"Rarity": "NORMAL",
-		"input": [
-		  2
-		]
-	  },
-	  {
-		"equipmentID": "톱날 단검",
-		"Rarity": "RARE",
-		"input": [
-		  3
-		]
-	  },
-	  {
-		"equipmentID": "불꽃 지팡이",
-		"Rarity": "NORMAL",
-		"input": [
-		  5
-		]
-	  },
-	  {
-		"equipmentID": "거대한 망치",
-		"Rarity": "RARE",
-		"input": [
-		  0.3
-		]
-	  },
-	  {
-		"equipmentID": "dagger",
-		"Rarity": "NORMAL",
-		"input": []
-	  },
-	  {
-		"equipmentID": "방패",
-		"Rarity": "NORMAL",
-		"input": []
-	  }
-	]
+    "comment": {
+      "equipmentID": "장비 ID",
+      "Rarity": "아이템 등급",
+      "input": "아이템 효과 숫자"
+    },
+    "type": {
+      "equipmentID": "string",
+      "Rarity": "Enum<Rarity>",
+      "input": "List<float>"
+    },
+    "data": [
+      {
+        "equipmentID": "독 단검",
+        "Rarity": "NORMAL",
+        "input": [
+          2
+        ]
+      },
+      {
+        "equipmentID": "톱날 단검",
+        "Rarity": "RARE",
+        "input": [
+          3
+        ]
+      },
+      {
+        "equipmentID": "불꽃 지팡이",
+        "Rarity": "NORMAL",
+        "input": [
+          5
+        ]
+      },
+      {
+        "equipmentID": "거대한 망치",
+        "Rarity": "RARE",
+        "input": [
+          0.3
+        ]
+      },
+      {
+        "equipmentID": "dagger",
+        "Rarity": "NORMAL",
+        "input": []
+      },
+      {
+        "equipmentID": "방패",
+        "Rarity": "NORMAL",
+        "input": []
+      }
+    ]
   },
   "PatternData": {
-	"comment": {
-	  "PatternID": "패턴 ID",
-	  "basicLineSubject": "기본 문장의 주어",
-	  "basicLineVerbID": "기본 문장의 서술어 ID",
-	  "adverbAppearRate": "부사어 등장 확률",
-	  "appearableAdverbID": "등장 가능한 부사어 ID",
-	  "appearableAdverbWeight": "등장 가능한 부사어 가중치",
-	  "verbAppearRate": "이어진 서술어 등장 확률",
-	  "appearableVerbID": "등장 가능한 이어진 서술어 ID",
-	  "appearableVerbWeight": "등장 가능한 이어진 서술어 가중치"
-	},
-	"type": {
-	  "PatternID": "string",
-	  "basicLineSubject": "string",
-	  "basicLineVerbID": "string",
-	  "adverbAppearRate": "float",
-	  "appearableAdverbID": "List<string>",
-	  "appearableAdverbWeight": "List<int>",
-	  "verbAppearRate": "float",
-	  "appearableVerbID": "List<string>",
-	  "appearableVerbWeight": "List<int>"
-	},
-	"data": [
-	  {
-		"PatternID": "GolbinPattern1",
-		"basicLineSubject": "고블린",
-		"basicLineVerbID": "hit",
-		"adverbAppearRate": 0.8,
-		"appearableAdverbID": [
-          "fast"
-		],
-		"appearableAdverbWeight": [
-		  1
-		],
-		"verbAppearRate": 0.2,
-		"appearableVerbID": [
-          "hit"
-		],
-		"appearableVerbWeight": [
-		  0
-		]
-	  },
-	  {
-		"PatternID": "BanditGoblinPattern1",
-		"basicLineSubject": "도적 고블린",
-		"basicLineVerbID": "slash",
-		"adverbAppearRate": 0.8,
-		"appearableAdverbID": [
-          "날카롭게"
-		],
-		"appearableAdverbWeight": [
-		  1
-		],
-		"verbAppearRate": 0.6,
-		"appearableVerbID": [
-          "slash"
-		],
-		"appearableVerbWeight": [
-		  1
-		]
-	  },
-	  {
-		"PatternID": "OrcPattern1",
-		"basicLineSubject": "오크",
-		"basicLineVerbID": "smash",
-		"adverbAppearRate": 0.9,
-		"appearableAdverbID": [
-          "강하게"
-		],
-		"appearableAdverbWeight": [
-		  1
-		],
-		"verbAppearRate": 0,
-		"appearableVerbID": [],
-		"appearableVerbWeight": []
-	  },
-	  {
-		"PatternID": "GoblinPattern2",
-		"basicLineSubject": "고블린",
-		"basicLineVerbID": "hit",
-		"adverbAppearRate": 0.5,
-		"appearableAdverbID": [
-          "fast"
-		],
-		"appearableAdverbWeight": [
-		  1
-		],
-		"verbAppearRate": 0.5,
-		"appearableVerbID": [
-          "hit"
-		],
-		"appearableVerbWeight": [
-		  1
-		]
-	  },
-	  {
-		"PatternID": "GoblinPattern3",
-		"basicLineSubject": "고블린",
-		"basicLineVerbID": "taunt",
-		"adverbAppearRate": 0.7,
-		"appearableAdverbID": [
-          "조롱하며"
-		],
-		"appearableAdverbWeight": [
-		  1
-		],
-		"verbAppearRate": 0.3,
-		"appearableVerbID": [
-          "hit"
-		],
-		"appearableVerbWeight": [
-		  1
-		]
-	  },
-	  {
-		"PatternID": "BanditGoblinPattern2",
-		"basicLineSubject": "도적 고블린",
-		"basicLineVerbID": "slash",
-		"adverbAppearRate": 0.8,
-		"appearableAdverbID": [
-		  "정확하게",
-		  "날카롭게",
-          "fast"
-		],
-		"appearableAdverbWeight": [
-		  1
-		],
-		"verbAppearRate": 0.2,
-		"appearableVerbID": [
-          "slash"
-		],
-		"appearableVerbWeight": [
-		  1
-		]
-	  },
-	  {
-		"PatternID": "BanditGoblinPattern3",
-		"basicLineSubject": "도적 고블린",
-		"basicLineVerbID": "slash",
-		"adverbAppearRate": 0.9,
-		"appearableAdverbID": [
-          "날카롭게"
-		],
-		"appearableAdverbWeight": [
-		  1
-		],
-		"verbAppearRate": 1,
-		"appearableVerbID": [
-          "slash"
-		],
-		"appearableVerbWeight": [
-		  1
-		]
-	  },
-	  {
-		"PatternID": "OrcPattern2",
-		"basicLineSubject": "오크",
-		"basicLineVerbID": "smash",
-		"adverbAppearRate": 1,
-		"appearableAdverbID": [
-          "강하게"
-		],
-		"appearableAdverbWeight": [
-		  1
-		],
-		"verbAppearRate": 0,
-		"appearableVerbID": [],
-		"appearableVerbWeight": []
-	  },
-	  {
-		"PatternID": "OrcPattern3",
-		"basicLineSubject": "오크",
-		"basicLineVerbID": "hit",
-		"adverbAppearRate": 0.5,
-		"appearableAdverbID": [
-          "fast"
-		],
-		"appearableAdverbWeight": [
-		  1
-		],
-		"verbAppearRate": 0.6,
-		"appearableVerbID": [
-          "smash"
-		],
-		"appearableVerbWeight": [
-		  1
-		]
-	  },
-	  {
-		"PatternID": "OrcPattern4",
-		"basicLineSubject": "오크",
-		"basicLineVerbID": "taunt",
-		"adverbAppearRate": 0.8,
-		"appearableAdverbID": [
-          "조롱하며"
-		],
-		"appearableAdverbWeight": [
-		  1
-		],
-		"verbAppearRate": 1,
-		"appearableVerbID": [
-          "smash"
-		],
-		"appearableVerbWeight": [
-		  1
-		]
-	  }
-	]
+    "comment": {
+      "PatternID": "패턴 ID",
+      "basicLineSubject": "기본 문장의 주어",
+      "basicLineVerbID": "기본 문장의 서술어 ID",
+      "adverbAppearRate": "부사어 등장 확률",
+      "appearableAdverb": "등장 가능한 부사어 ID",
+      "verbAppearRate": "이어진 서술어 등장 확률",
+      "appearableVerb": "등장 가능한 이어진 서술어 ID"
+    },
+    "type": {
+      "PatternID": "string",
+      "basicLineSubject": "string",
+      "basicLineVerbID": "string",
+      "adverbAppearRate": "float",
+      "appearableAdverb": "List<Struct(id:string,weight:int)>",
+      "verbAppearRate": "float",
+      "appearableVerb": "List<Struct(id:string,weight:int)>"
+    },
+    "data": [
+      {
+        "PatternID": "GolbinPattern1",
+        "basicLineSubject": "고블린",
+        "basicLineVerbID": "hit",
+        "adverbAppearRate": 0.8,
+        "appearableAdverb": [
+          {
+            "id": "fast",
+            "weight": 1
+          }
+        ],
+        "verbAppearRate": 0.2,
+        "appearableVerb": [
+          {
+            "id": "hit",
+            "weight": 0
+          }
+        ]
+      },
+      {
+        "PatternID": "BanditGoblinPattern1",
+        "basicLineSubject": "도적 고블린",
+        "basicLineVerbID": "slash",
+        "adverbAppearRate": 0.8,
+        "appearableAdverb": [
+          {
+            "id": "날카롭게",
+            "weight": 1
+          }
+        ],
+        "verbAppearRate": 0.6,
+        "appearableVerb": [
+          {
+            "id": "slash",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "PatternID": "OrcPattern1",
+        "basicLineSubject": "오크",
+        "basicLineVerbID": "smash",
+        "adverbAppearRate": 0.9,
+        "appearableAdverb": [
+          {
+            "id": "강하게",
+            "weight": 1
+          }
+        ],
+        "verbAppearRate": 0,
+        "appearableVerb": []
+      },
+      {
+        "PatternID": "GoblinPattern2",
+        "basicLineSubject": "고블린",
+        "basicLineVerbID": "hit",
+        "adverbAppearRate": 0.5,
+        "appearableAdverb": [
+          {
+            "id": "fast",
+            "weight": 1
+          }
+        ],
+        "verbAppearRate": 0.5,
+        "appearableVerb": [
+          {
+            "id": "hit",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "PatternID": "GoblinPattern3",
+        "basicLineSubject": "고블린",
+        "basicLineVerbID": "taunt",
+        "adverbAppearRate": 0.7,
+        "appearableAdverb": [
+          {
+            "id": "조롱하며",
+            "weight": 1
+          }
+        ],
+        "verbAppearRate": 0.3,
+        "appearableVerb": [
+          {
+            "id": "hit",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "PatternID": "BanditGoblinPattern2",
+        "basicLineSubject": "도적 고블린",
+        "basicLineVerbID": "slash",
+        "adverbAppearRate": 0.8,
+        "appearableAdverb": [
+          {
+            "id": "정확하게",
+            "weight": 1
+          },
+          {
+            "id": "날카롭게",
+            "weight": 1
+          },
+          {
+            "id": "fast",
+            "weight": 1
+          }
+        ],
+        "verbAppearRate": 0.2,
+        "appearableVerb": [
+          {
+            "id": "slash",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "PatternID": "BanditGoblinPattern3",
+        "basicLineSubject": "도적 고블린",
+        "basicLineVerbID": "slash",
+        "adverbAppearRate": 0.9,
+        "appearableAdverb": [
+          {
+            "id": "날카롭게",
+            "weight": 1
+          }
+        ],
+        "verbAppearRate": 1,
+        "appearableVerb": [
+          {
+            "id": "slash",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "PatternID": "OrcPattern2",
+        "basicLineSubject": "오크",
+        "basicLineVerbID": "smash",
+        "adverbAppearRate": 1,
+        "appearableAdverb": [
+          {
+            "id": "강하게",
+            "weight": 1
+          }
+        ],
+        "verbAppearRate": 0,
+        "appearableVerb": []
+      },
+      {
+        "PatternID": "OrcPattern3",
+        "basicLineSubject": "오크",
+        "basicLineVerbID": "hit",
+        "adverbAppearRate": 0.5,
+        "appearableAdverb": [
+          {
+            "id": "fast",
+            "weight": 1
+          }
+        ],
+        "verbAppearRate": 0.6,
+        "appearableVerb": [
+          {
+            "id": "smash",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "PatternID": "OrcPattern4",
+        "basicLineSubject": "오크",
+        "basicLineVerbID": "taunt",
+        "adverbAppearRate": 0.8,
+        "appearableAdverb": [
+          {
+            "id": "조롱하며",
+            "weight": 1
+          }
+        ],
+        "verbAppearRate": 1,
+        "appearableVerb": [
+          {
+            "id": "smash",
+            "weight": 1
+          }
+        ]
+      }
+    ]
   },
   "VerbData": {
-	"comment": {
-	  "verbID": "서술어 ID",
-	  "statBonusType": "적용되는 능력치",
-	  "statBonusValue": "적용 능력치 계수",
-	  "haveBatchim": "받침 여부",
-	  "coolDownTurn": "쿨타임",
-	  "appliedEffectID": "시전자에게 적용되는 디버프 ID",
-	  "appliedEffectValue": "시전자에게 적용되는 디버프 수치",
-	  "poiseDamageRate": "강인도 피해 배율"
-	},
-	"type": {
-	  "verbID": "string",
-	  "statBonusType": "Enum<StatType>",
-	  "statBonusValue": "float",
-	  "haveBatchim": "bool",
-	  "coolDownTurn": "int",
-	  "appliedEffectID": "List<string>",
-	  "appliedEffectValue": "List<float>",
-	  "poiseDamageRate": "float"
-	},
-	"data": [
-	  {
-		"verbID": "hit",
-		"statBonusType": "STR",
-		"statBonusValue": 1,
-		"haveBatchim": true,
-		"coolDownTurn": 1,
-		"appliedEffectID": [],
-		"appliedEffectValue": [],
-		"poiseDamageRate": 1
-	  },
-	  {
-		"verbID": "slash",
-		"statBonusType": "STR",
-		"statBonusValue": 0.8,
-		"haveBatchim": true,
-		"coolDownTurn": 1,
-		"appliedEffectID": [],
-		"appliedEffectValue": [],
-		"poiseDamageRate": 1
-	  },
-	  {
-		"verbID": "burn",
-		"statBonusType": "INT",
-		"statBonusValue": 1.2,
-		"haveBatchim": true,
-		"coolDownTurn": 1,
-		"appliedEffectID": [
+    "comment": {
+      "verbID": "서술어 ID",
+      "statBonusType": "적용되는 능력치",
+      "statBonusValue": "적용 능력치 계수",
+      "haveBatchim": "받침 여부",
+      "coolDownTurn": "쿨타임",
+      "appliedEffectID": "시전자에게 적용되는 디버프 ID",
+      "appliedEffectValue": "시전자에게 적용되는 디버프 수치",
+      "poiseDamageRate": "강인도 피해 배율"
+    },
+    "type": {
+      "verbID": "string",
+      "statBonusType": "Enum<StatType>",
+      "statBonusValue": "float",
+      "haveBatchim": "bool",
+      "coolDownTurn": "int",
+      "appliedEffectID": "List<string>",
+      "appliedEffectValue": "List<float>",
+      "poiseDamageRate": "float"
+    },
+    "data": [
+      {
+        "verbID": "hit",
+        "statBonusType": "STR",
+        "statBonusValue": 1,
+        "haveBatchim": true,
+        "coolDownTurn": 1,
+        "appliedEffectID": [],
+        "appliedEffectValue": [],
+        "poiseDamageRate": 1
+      },
+      {
+        "verbID": "slash",
+        "statBonusType": "STR",
+        "statBonusValue": 0.8,
+        "haveBatchim": true,
+        "coolDownTurn": 1,
+        "appliedEffectID": [],
+        "appliedEffectValue": [],
+        "poiseDamageRate": 1
+      },
+      {
+        "verbID": "burn",
+        "statBonusType": "INT",
+        "statBonusValue": 1.2,
+        "haveBatchim": true,
+        "coolDownTurn": 1,
+        "appliedEffectID": [
           "마력 탈진"
-		],
-		"appliedEffectValue": [
-		  1
-		],
-		"poiseDamageRate": 1
-	  },
-	  {
-		"verbID": "smash",
-		"statBonusType": "STR",
-		"statBonusValue": 1.8,
-		"haveBatchim": true,
-		"coolDownTurn": 3,
-		"appliedEffectID": [],
-		"appliedEffectValue": [],
-		"poiseDamageRate": 2.5
-	  },
-	  {
-		"verbID": "taunt",
-		"statBonusType": "CHA",
-		"statBonusValue": 0.5,
-		"haveBatchim": true,
-		"coolDownTurn": 2,
-		"appliedEffectID": [],
-		"appliedEffectValue": [],
-		"poiseDamageRate": 1
-	  },
-	  {
-		"verbID": "guard",
-		"statBonusType": "DEX",
-		"statBonusValue": 1,
-		"haveBatchim": true,
-		"coolDownTurn": 2,
-		"appliedEffectID": [],
-		"appliedEffectValue": [],
-		"poiseDamageRate": 0
-	  }
-	]
+        ],
+        "appliedEffectValue": [
+          1
+        ],
+        "poiseDamageRate": 1
+      },
+      {
+        "verbID": "smash",
+        "statBonusType": "STR",
+        "statBonusValue": 1.8,
+        "haveBatchim": true,
+        "coolDownTurn": 3,
+        "appliedEffectID": [],
+        "appliedEffectValue": [],
+        "poiseDamageRate": 2.5
+      },
+      {
+        "verbID": "taunt",
+        "statBonusType": "CHA",
+        "statBonusValue": 0.5,
+        "haveBatchim": true,
+        "coolDownTurn": 2,
+        "appliedEffectID": [],
+        "appliedEffectValue": [],
+        "poiseDamageRate": 1
+      },
+      {
+        "verbID": "guard",
+        "statBonusType": "DEX",
+        "statBonusValue": 1,
+        "haveBatchim": true,
+        "coolDownTurn": 2,
+        "appliedEffectID": [],
+        "appliedEffectValue": [],
+        "poiseDamageRate": 0
+      }
+    ]
   },
   "AdverbData": {
-	"comment": {
-	  "adverbID": "부사어 ID",
-	  "adverbType": "부사어 Type",
-	  "coefficient": "적용 계수",
-	  "modifyRange": "수식 범위",
-	  "conflictingAdverb": "중복 불가 부사어 ID",
-	  "requirementAdverb": "생성시 필요 부사어 ID",
-	  "addtionalCreatedAdverb": "추가 생성 부사어 ID",
-	  "appliedEffectID": "대상에게 적용되는 디버프 ID",
-	  "appliedEffectValue": "대상에게 적용되는 디버프 수치",
-	  "haveBatchim": "받침 여부"
-	},
-	"type": {
-	  "adverbID": "string",
-	  "adverbType": "Enum<AdverbType>",
-	  "coefficient": "float",
-	  "modifyRange": "Enum<RangeType>",
-	  "conflictingAdverb": "List<string>",
-	  "requirementAdverb": "List<string>",
-	  "addtionalCreatedAdverb": "List<string>",
-	  "appliedEffectID": "List<string>",
-	  "appliedEffectValue": "List<float>",
-	  "haveBatchim": "bool"
-	},
-	"data": [
-	  {
-		"adverbID": "fast",
-		"adverbType": "PERCENT_POINT",
-		"coefficient": 0.1,
-		"modifyRange": "TEXT",
-		"conflictingAdverb": [
+    "comment": {
+      "adverbID": "부사어 ID",
+      "adverbType": "부사어 Type",
+      "coefficient": "적용 계수",
+      "modifyRange": "수식 범위",
+      "conflictingAdverb": "중복 불가 부사어 ID",
+      "requirementAdverb": "생성시 필요 부사어 ID",
+      "addtionalCreatedAdverb": "추가 생성 부사어 ID",
+      "appliedEffectID": "대상에게 적용되는 디버프 ID",
+      "appliedEffectValue": "대상에게 적용되는 디버프 수치",
+      "haveBatchim": "받침 여부"
+    },
+    "type": {
+      "adverbID": "string",
+      "adverbType": "Enum<AdverbType>",
+      "coefficient": "float",
+      "modifyRange": "Enum<RangeType>",
+      "conflictingAdverb": "List<string>",
+      "requirementAdverb": "List<string>",
+      "addtionalCreatedAdverb": "List<string>",
+      "appliedEffectID": "List<string>",
+      "appliedEffectValue": "List<float>",
+      "haveBatchim": "bool"
+    },
+    "data": [
+      {
+        "adverbID": "fast",
+        "adverbType": "PERCENT_POINT",
+        "coefficient": 0.1,
+        "modifyRange": "TEXT",
+        "conflictingAdverb": [
           "fast"
-		],
-		"requirementAdverb": [],
-		"addtionalCreatedAdverb": [],
-		"appliedEffectID": [],
-		"appliedEffectValue": [],
-		"haveBatchim": false
-	  },
-	  {
-		"adverbID": "dagger",
-		"adverbType": "NONE",
-		"coefficient": null,
-		"modifyRange": null,
-		"conflictingAdverb": [],
-		"requirementAdverb": [],
-		"addtionalCreatedAdverb": [],
-		"appliedEffectID": [],
-		"appliedEffectValue": [],
-		"haveBatchim": true
-	  },
-	  {
-		"adverbID": "톱날 단검",
-		"adverbType": "EFFECT",
-		"coefficient": null,
-		"modifyRange": "TEXT",
-		"conflictingAdverb": [],
-		"requirementAdverb": [],
-		"addtionalCreatedAdverb": [],
-		"appliedEffectID": [
+        ],
+        "requirementAdverb": [],
+        "addtionalCreatedAdverb": [],
+        "appliedEffectID": [],
+        "appliedEffectValue": [],
+        "haveBatchim": false
+      },
+      {
+        "adverbID": "dagger",
+        "adverbType": "NONE",
+        "coefficient": null,
+        "modifyRange": null,
+        "conflictingAdverb": [],
+        "requirementAdverb": [],
+        "addtionalCreatedAdverb": [],
+        "appliedEffectID": [],
+        "appliedEffectValue": [],
+        "haveBatchim": true
+      },
+      {
+        "adverbID": "톱날 단검",
+        "adverbType": "EFFECT",
+        "coefficient": null,
+        "modifyRange": "TEXT",
+        "conflictingAdverb": [],
+        "requirementAdverb": [],
+        "addtionalCreatedAdverb": [],
+        "appliedEffectID": [
           "출혈"
-		],
-		"appliedEffectValue": [
-		  3
-		],
-		"haveBatchim": true
-	  },
-	  {
-		"adverbID": "불꽃 지팡이",
-		"adverbType": "EFFECT",
-		"coefficient": null,
-		"modifyRange": "TEXT",
-		"conflictingAdverb": [],
-		"requirementAdverb": [],
-		"addtionalCreatedAdverb": [],
-		"appliedEffectID": [
+        ],
+        "appliedEffectValue": [
+          3
+        ],
+        "haveBatchim": true
+      },
+      {
+        "adverbID": "불꽃 지팡이",
+        "adverbType": "EFFECT",
+        "coefficient": null,
+        "modifyRange": "TEXT",
+        "conflictingAdverb": [],
+        "requirementAdverb": [],
+        "addtionalCreatedAdverb": [],
+        "appliedEffectID": [
           "화상"
-		],
-		"appliedEffectValue": [
-		  5
-		],
-		"haveBatchim": false
-	  },
-	  {
-		"adverbID": "독 단검",
-		"adverbType": "EFFECT",
-		"coefficient": null,
-		"modifyRange": "TEXT",
-		"conflictingAdverb": [],
-		"requirementAdverb": [],
-		"addtionalCreatedAdverb": [],
-		"appliedEffectID": [
+        ],
+        "appliedEffectValue": [
+          5
+        ],
+        "haveBatchim": false
+      },
+      {
+        "adverbID": "독 단검",
+        "adverbType": "EFFECT",
+        "coefficient": null,
+        "modifyRange": "TEXT",
+        "conflictingAdverb": [],
+        "requirementAdverb": [],
+        "addtionalCreatedAdverb": [],
+        "appliedEffectID": [
           "중독"
-		],
-		"appliedEffectValue": [
-		  2
-		],
-		"haveBatchim": true
-	  },
-	  {
-		"adverbID": "거대한 망치",
-		"adverbType": "PERCENT_POINT",
-		"coefficient": 0.3,
-		"modifyRange": "TEXT",
-		"conflictingAdverb": [],
-		"requirementAdverb": [],
-		"addtionalCreatedAdverb": [],
-		"appliedEffectID": [],
-		"appliedEffectValue": [],
-		"haveBatchim": false
-	  },
-	  {
-		"adverbID": "강하게",
-		"adverbType": "PERCENT_POINT",
-		"coefficient": 0.2,
-		"modifyRange": "TEXT",
-		"conflictingAdverb": [],
-		"requirementAdverb": [],
-		"addtionalCreatedAdverb": [],
-		"appliedEffectID": [],
-		"appliedEffectValue": [],
-		"haveBatchim": false
-	  },
-	  {
-		"adverbID": "날카롭게",
-		"adverbType": "EFFECT",
-		"coefficient": null,
-		"modifyRange": "TEXT",
-		"conflictingAdverb": [],
-		"requirementAdverb": [],
-		"addtionalCreatedAdverb": [],
-		"appliedEffectID": [
+        ],
+        "appliedEffectValue": [
+          2
+        ],
+        "haveBatchim": true
+      },
+      {
+        "adverbID": "거대한 망치",
+        "adverbType": "PERCENT_POINT",
+        "coefficient": 0.3,
+        "modifyRange": "TEXT",
+        "conflictingAdverb": [],
+        "requirementAdverb": [],
+        "addtionalCreatedAdverb": [],
+        "appliedEffectID": [],
+        "appliedEffectValue": [],
+        "haveBatchim": false
+      },
+      {
+        "adverbID": "강하게",
+        "adverbType": "PERCENT_POINT",
+        "coefficient": 0.2,
+        "modifyRange": "TEXT",
+        "conflictingAdverb": [],
+        "requirementAdverb": [],
+        "addtionalCreatedAdverb": [],
+        "appliedEffectID": [],
+        "appliedEffectValue": [],
+        "haveBatchim": false
+      },
+      {
+        "adverbID": "날카롭게",
+        "adverbType": "EFFECT",
+        "coefficient": null,
+        "modifyRange": "TEXT",
+        "conflictingAdverb": [],
+        "requirementAdverb": [],
+        "addtionalCreatedAdverb": [],
+        "appliedEffectID": [
           "출혈"
-		],
-		"appliedEffectValue": [
-		  1
-		],
-		"haveBatchim": false
-	  },
-	  {
-		"adverbID": "정확하게",
-		"adverbType": "CRIT_RATE",
-		"coefficient": 0.1,
-		"modifyRange": "TEXT",
-		"conflictingAdverb": [],
-		"requirementAdverb": [],
-		"addtionalCreatedAdverb": [],
-		"appliedEffectID": [],
-		"appliedEffectValue": [],
-		"haveBatchim": false
-	  },
-	  {
-		"adverbID": "조롱하며",
-		"adverbType": "EFFECT",
-		"coefficient": null,
-		"modifyRange": "TEXT",
-		"conflictingAdverb": [],
-		"requirementAdverb": [],
-		"addtionalCreatedAdverb": [],
-		"appliedEffectID": [
+        ],
+        "appliedEffectValue": [
+          1
+        ],
+        "haveBatchim": false
+      },
+      {
+        "adverbID": "정확하게",
+        "adverbType": "CRIT_RATE",
+        "coefficient": 0.1,
+        "modifyRange": "TEXT",
+        "conflictingAdverb": [],
+        "requirementAdverb": [],
+        "addtionalCreatedAdverb": [],
+        "appliedEffectID": [],
+        "appliedEffectValue": [],
+        "haveBatchim": false
+      },
+      {
+        "adverbID": "조롱하며",
+        "adverbType": "EFFECT",
+        "coefficient": null,
+        "modifyRange": "TEXT",
+        "conflictingAdverb": [],
+        "requirementAdverb": [],
+        "addtionalCreatedAdverb": [],
+        "appliedEffectID": [
           "경직"
-		],
-		"appliedEffectValue": [
-		  1
-		],
-		"haveBatchim": false
-	  },
-	  {
-		"adverbID": "머뭇거리며",
-		"adverbType": "PATTERN_MOD",
-		"coefficient": -0.2,
-		"modifyRange": "LINE",
-		"conflictingAdverb": [],
-		"requirementAdverb": [],
-		"addtionalCreatedAdverb": [],
-		"appliedEffectID": [],
-		"appliedEffectValue": [],
-		"haveBatchim": false
-	  },
-	  {
-		"adverbID": "방패",
-		"adverbType": "NONE",
-		"coefficient": null,
-		"modifyRange": null,
-		"conflictingAdverb": [],
-		"requirementAdverb": [],
-		"addtionalCreatedAdverb": [],
-		"appliedEffectID": [],
-		"appliedEffectValue": [],
-		"haveBatchim": false
-	  }
-	]
+        ],
+        "appliedEffectValue": [
+          1
+        ],
+        "haveBatchim": false
+      },
+      {
+        "adverbID": "머뭇거리며",
+        "adverbType": "PATTERN_MOD",
+        "coefficient": -0.2,
+        "modifyRange": "LINE",
+        "conflictingAdverb": [],
+        "requirementAdverb": [],
+        "addtionalCreatedAdverb": [],
+        "appliedEffectID": [],
+        "appliedEffectValue": [],
+        "haveBatchim": false
+      },
+      {
+        "adverbID": "방패",
+        "adverbType": "NONE",
+        "coefficient": null,
+        "modifyRange": null,
+        "conflictingAdverb": [],
+        "requirementAdverb": [],
+        "addtionalCreatedAdverb": [],
+        "appliedEffectID": [],
+        "appliedEffectValue": [],
+        "haveBatchim": false
+      }
+    ]
   },
   "EffectData": {
-	"comment": {
-	  "effectID": "Effect ID",
-	  "triggerTiming": "발동 시점",
-	  "decayType": "발동시 감소 방식",
-	  "interval": "발동 주기",
-	  "stackRule": "중첩 방식"
-	},
-	"type": {
-	  "effectID": "string",
-	  "triggerTiming": "Enum<TriggerTimingType>",
-	  "decayType": "Enum<DecayType>",
-	  "interval": "int",
-	  "stackRule": "Enum<StackRuleType>"
-	},
-	"data": [
-	  {
-		"effectID": "중독",
-		"triggerTiming": "TURN_INTERVAL",
-		"decayType": "MINUS_ONE",
-		"interval": 3,
-		"stackRule": "ADD"
-	  },
-	  {
-		"effectID": "출혈",
-		"triggerTiming": "ON_VERB",
-		"decayType": "NONE",
-		"interval": 1,
-		"stackRule": "ADD"
-	  },
-	  {
-		"effectID": "화상",
-		"triggerTiming": "SENTENCE_END",
-		"decayType": "HALVE",
-		"interval": 1,
-		"stackRule": "MAX"
-	  },
-	  {
-		"effectID": "마력 탈진",
-		"triggerTiming": "TURN_START",
-		"decayType": "NONE",
-		"interval": 1,
-		"stackRule": "ADD"
-	  },
-	  {
-		"effectID": "경직",
-		"triggerTiming": "TURN_START",
-		"decayType": "MINUS_ONE",
-		"interval": 1,
-		"stackRule": "MAX"
-	  }
-	]
+    "comment": {
+      "effectID": "Effect ID",
+      "triggerTiming": "발동 시점",
+      "decayType": "발동시 감소 방식",
+      "interval": "발동 주기",
+      "stackRule": "중첩 방식"
+    },
+    "type": {
+      "effectID": "string",
+      "triggerTiming": "Enum<TriggerTimingType>",
+      "decayType": "Enum<DecayType>",
+      "interval": "int",
+      "stackRule": "Enum<StackRuleType>"
+    },
+    "data": [
+      {
+        "effectID": "중독",
+        "triggerTiming": "TURN_INTERVAL",
+        "decayType": "MINUS_ONE",
+        "interval": 3,
+        "stackRule": "ADD"
+      },
+      {
+        "effectID": "출혈",
+        "triggerTiming": "ON_VERB",
+        "decayType": "NONE",
+        "interval": 1,
+        "stackRule": "ADD"
+      },
+      {
+        "effectID": "화상",
+        "triggerTiming": "SENTENCE_END",
+        "decayType": "HALVE",
+        "interval": 1,
+        "stackRule": "MAX"
+      },
+      {
+        "effectID": "마력 탈진",
+        "triggerTiming": "TURN_START",
+        "decayType": "NONE",
+        "interval": 1,
+        "stackRule": "ADD"
+      },
+      {
+        "effectID": "경직",
+        "triggerTiming": "TURN_START",
+        "decayType": "MINUS_ONE",
+        "interval": 1,
+        "stackRule": "MAX"
+      }
+    ]
   }
 }

@@ -5,3 +5,5 @@
 [resource]
 script = ExtResource("1_wltq4")
 skillID = "smash"
+verbID = "smash"
+cooldown = 4

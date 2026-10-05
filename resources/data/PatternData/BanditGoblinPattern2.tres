@@ -1,15 +1,35 @@
 [gd_resource type="Resource" script_class="PatternDataResource" format=3 uid="uid://cke1x86l7fkvp"]
 
-[ext_resource type="Script" uid="uid://dhv7peddn5rxn" path="res://scripts/custom_resources/PatternDataResource.gd" id="1_tb0jp"]
+[ext_resource type="Script" uid="uid://bkwvi6hpwrr5q" path="res://scripts/structs/appearable_adverb_struct.gd" id="1_bgkxo"]
+[ext_resource type="Script" uid="uid://bgyh5xk7240a8" path="res://scripts/structs/appearable_verb_struct.gd" id="2_qdqpm"]
+[ext_resource type="Script" uid="uid://dhv7peddn5rxn" path="res://scripts/custom_resources/PatternDataResource.gd" id="3_to5sx"]
+
+[sub_resource type="Resource" id="Resource_04ooe"]
+script = ExtResource("1_bgkxo")
+id = "정확하게"
+weight = 1
+
+[sub_resource type="Resource" id="Resource_jayjw"]
+script = ExtResource("1_bgkxo")
+id = "날카롭게"
+weight = 1
+
+[sub_resource type="Resource" id="Resource_p4ias"]
+script = ExtResource("1_bgkxo")
+id = "fast"
+weight = 1
+
+[sub_resource type="Resource" id="Resource_ka0du"]
+script = ExtResource("2_qdqpm")
+id = "slash"
+weight = 1
 
 [resource]
-script = ExtResource("1_tb0jp")
+script = ExtResource("3_to5sx")
 PatternID = "BanditGoblinPattern2"
 basicLineSubject = "도적 고블린"
 basicLineVerbID = "slash"
 adverbAppearRate = 0.8
-appearableAdverbID = Array[String](["정확하게", "날카롭게", "fast"])
-appearableAdverbWeight = Array[int]([1])
+appearableAdverb = Array[ExtResource("1_bgkxo")]([SubResource("Resource_04ooe"), SubResource("Resource_jayjw"), SubResource("Resource_p4ias")])
 verbAppearRate = 0.2
-appearableVerbID = Array[String](["slash"])
-appearableVerbWeight = Array[int]([1])
+appearableVerb = Array[ExtResource("2_qdqpm")]([SubResource("Resource_ka0du")])

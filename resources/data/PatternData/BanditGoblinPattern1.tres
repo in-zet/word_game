@@ -1,6 +1,18 @@
 [gd_resource type="Resource" script_class="PatternDataResource" format=3 uid="uid://biaiy1vfugfjy"]
 
+[ext_resource type="Script" uid="uid://bkwvi6hpwrr5q" path="res://scripts/structs/appearable_adverb_struct.gd" id="1_bn56h"]
 [ext_resource type="Script" uid="uid://dhv7peddn5rxn" path="res://scripts/custom_resources/PatternDataResource.gd" id="1_fqilx"]
+[ext_resource type="Script" uid="uid://bgyh5xk7240a8" path="res://scripts/structs/appearable_verb_struct.gd" id="2_tjqln"]
+
+[sub_resource type="Resource" id="Resource_dnfjc"]
+script = ExtResource("1_bn56h")
+id = "날카롭게"
+weight = 1
+
+[sub_resource type="Resource" id="Resource_jipg4"]
+script = ExtResource("2_tjqln")
+id = "slash"
+weight = 1
 
 [resource]
 script = ExtResource("1_fqilx")
@@ -8,8 +20,6 @@ PatternID = "BanditGoblinPattern1"
 basicLineSubject = "도적 고블린"
 basicLineVerbID = "slash"
 adverbAppearRate = 0.8
-appearableAdverbID = Array[String](["날카롭게"])
-appearableAdverbWeight = Array[int]([1])
+appearableAdverb = Array[ExtResource("1_bn56h")]([SubResource("Resource_dnfjc")])
 verbAppearRate = 0.6
-appearableVerbID = Array[String](["slash"])
-appearableVerbWeight = Array[int]([1])
+appearableVerb = Array[ExtResource("2_tjqln")]([SubResource("Resource_jipg4")])

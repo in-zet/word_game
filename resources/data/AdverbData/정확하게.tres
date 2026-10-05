@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_qgdx1")
 adverbID = "정확하게"
+adverbType = 5
 coefficient = 0.1

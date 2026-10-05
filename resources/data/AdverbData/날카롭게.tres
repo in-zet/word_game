@@ -5,4 +5,6 @@
 [resource]
 script = ExtResource("1_qybke")
 adverbID = "날카롭게"
+adverbType = 3
 appliedEffectID = Array[String](["출혈"])
+appliedEffectValue = Array[float]([1.0])

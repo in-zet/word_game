@@ -5,3 +5,5 @@
 [resource]
 script = ExtResource("1_y7y58")
 skillID = "guard"
+verbID = "guard"
+cooldown = 3

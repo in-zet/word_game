@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_xd7yx")
 effectID = "마력 탈진"
+triggerTiming = 3
 interval = 1

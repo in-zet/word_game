@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_smyia")
 adverbID = "독 단검"
+adverbType = 3
 appliedEffectID = Array[String](["중독"])
+appliedEffectValue = Array[float]([2.0])
 haveBatchim = true

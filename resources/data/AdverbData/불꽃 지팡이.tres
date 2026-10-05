@@ -5,4 +5,6 @@
 [resource]
 script = ExtResource("1_anyyu")
 adverbID = "불꽃 지팡이"
+adverbType = 3
 appliedEffectID = Array[String](["화상"])
+appliedEffectValue = Array[float]([5.0])

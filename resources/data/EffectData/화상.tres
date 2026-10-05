@@ -5,4 +5,7 @@
 [resource]
 script = ExtResource("1_e4qcv")
 effectID = "화상"
+triggerTiming = 2
+decayType = 2
 interval = 1
+stackRule = 1

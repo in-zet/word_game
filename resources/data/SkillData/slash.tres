@@ -5,3 +5,5 @@
 [resource]
 script = ExtResource("1_qwolo")
 skillID = "slash"
+verbID = "slash"
+cooldown = 2

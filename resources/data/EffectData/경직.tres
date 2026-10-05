@@ -5,4 +5,7 @@
 [resource]
 script = ExtResource("1_obup1")
 effectID = "경직"
+triggerTiming = 3
+decayType = 1
 interval = 1
+stackRule = 1

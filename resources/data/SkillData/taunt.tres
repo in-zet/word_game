@@ -5,3 +5,5 @@
 [resource]
 script = ExtResource("1_ta8ca")
 skillID = "taunt"
+verbID = "taunt"
+cooldown = 3

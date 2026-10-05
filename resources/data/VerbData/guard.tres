@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_g1ym4")
 verbID = "guard"
+statBonusType = 1
 statBonusValue = 1.0
 haveBatchim = true
 coolDownTurn = 2
