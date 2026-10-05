@@ -5,4 +5,9 @@ extends RefCounted
 
 enum Value {
 	NONE,
+	TRUE_DAMAGE,
+	PERCENT_POINT,
+	EFFECT,
+	PATTERN_MOD,
+	CRIT_RATE,
 }

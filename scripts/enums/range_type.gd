@@ -4,7 +4,6 @@ extends RefCounted
 ## Google Sheets 구조가 바뀌면 생성 스크립트를 다시 실행해서 갱신하세요.
 
 enum Value {
-	NONE,
 	TEXT,
-	LINE
+	LINE,
 }
