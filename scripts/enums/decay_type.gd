@@ -5,4 +5,6 @@ extends RefCounted
 
 enum Value {
 	NONE,
+	MINUS_ONE,
+	HALVE,
 }

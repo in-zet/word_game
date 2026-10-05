@@ -5,6 +5,9 @@ extends RefCounted
 
 enum Value {
 	NONE,
-	MEANS,   ## 수단의 부사어 (무기: 단검으로)
-	MANNER,  ## 방식의 부사어 (어떻게: 빠르게)
+	TRUE_DAMAGE,
+	PERCENT_POINT,
+	EFFECT,
+	PATTERN_MOD,
+	CRIT_RATE,
 }
