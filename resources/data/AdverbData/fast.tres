@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_g2ghd")
 adverbID = "fast"
+adverbType = 2
 coefficient = 0.1
 conflictingAdverb = Array[String](["fast"])

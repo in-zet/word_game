@@ -8,3 +8,4 @@ verbID = "hit"
 statBonusValue = 1.0
 haveBatchim = true
 coolDownTurn = 1
+poiseDamageRate = 1.0

@@ -5,6 +5,8 @@
 [resource]
 script = ExtResource("1_l4l7e")
 verbID = "taunt"
+statBonusType = 3
 statBonusValue = 0.5
 haveBatchim = true
 coolDownTurn = 2
+poiseDamageRate = 1.0

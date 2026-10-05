@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_t1rmc")
 adverbID = "톱날 단검"
+adverbType = 3
 appliedEffectID = Array[String](["출혈"])
+appliedEffectValue = Array[float]([3.0])
 haveBatchim = true

@@ -8,3 +8,4 @@ verbID = "smash"
 statBonusValue = 1.8
 haveBatchim = true
 coolDownTurn = 3
+poiseDamageRate = 2.5

@@ -5,4 +5,6 @@
 [resource]
 script = ExtResource("1_qjnon")
 adverbID = "조롱하며"
+adverbType = 3
 appliedEffectID = Array[String](["경직"])
+appliedEffectValue = Array[float]([1.0])

@@ -26,10 +26,19 @@ extends EditorScript
 ## res://scripts/enums/<이름>.gd 에 있으면, 어떤 표기를 쓰든 그 파일을 덮어쓰지 않고
 ## 그대로 읽어서 사용합니다.
 ## 시트의 실제 셀 값은 "Fire" 처럼 이름 그대로 적으면 됩니다 (대소문자 무관 매칭).
+##
+## Struct 배열 지원:
+## - "List<Struct(필드1:타입1,필드2:타입2,...)>" (예: List<Struct(id:String,weight:int)>)
+##   → 컬럼명 기반으로 이름이 자동 생성되는 Struct 클래스(STRUCT_DIR 아래)를 만들고,
+##     그 Struct의 Array로 필드를 생성합니다. 필드 타입은 스칼라(int/float/bool/string)만 지원합니다.
+##   JSON 쪽 데이터는 [{"id": "fast", "weight": 1}, ...] 형태의 객체 배열이어야 합니다.
+## - Enum과 달리 기존 파일을 보존하는 기능은 없습니다 (필드 정의가 타입 문자열에 전부 있어서
+##   매번 실행할 때마다 덮어써서 시트와 항상 동기화된 상태로 유지합니다).
 
 const CACHE_PATH := "res://scripts/DB/sheet_data_cache.json"
 const RESOURCE_CLASS_DIR := "res://scripts/custom_resources/"
 const ENUM_DIR := "res://scripts/enums/"
+const STRUCT_DIR := "res://scripts/structs/"
 const DATA_DIR := "res://resources/data/"
 
 ## 이번 실행에서 생성/재사용한 enum들을 추적합니다. { enum_name: { "members": Array } }
@@ -69,6 +78,7 @@ func _run() -> void:
 
 	_ensure_dir(RESOURCE_CLASS_DIR)
 	_ensure_dir(ENUM_DIR)
+	_ensure_dir(STRUCT_DIR)
 	_ensure_dir(DATA_DIR)
 
 	var sheets: Dictionary = parsed
@@ -147,7 +157,7 @@ func _process_sheet(sheet_name: String, sheet_obj: Variant) -> void:
 		var row_instance: Resource = resource_script.new()
 		for field in fields:
 			var raw_value: Variant = row_dict.get(field.original_header, null)
-			row_instance.set(field.field_name, _coerce_value(raw_value, field))
+			row_instance.set(field.field_name, _coerce_value(raw_value, field, row_instance))
 
 		var id_raw: Variant = row_dict.get(id_field.original_header, null)
 		var id_value: Variant = _coerce_single_by_field(id_raw, id_field)
@@ -185,6 +195,11 @@ func _build_field_info(original_header: String, field_name: String, type_str: St
 		if list_match:
 			is_array = true
 			elem_type_str = list_match.get_string(1)
+
+			# --- struct 배열 감지: List<Struct(필드1:타입1,필드2:타입2,...)> ---
+			var struct_match := RegEx.create_from_string("(?i)^Struct\\(\\s*(.+?)\\s*\\)$").search(elem_type_str)
+			if struct_match:
+				return _build_struct_field_info(original_header, field_name, struct_match.get_string(1))
 
 	# --- enum 타입 감지: Enum<값1,값2,값3> / Enum<이름:값1,값2,값3> / Enum<이름>(참조 전용) ---
 	var enum_match := RegEx.create_from_string("(?i)^Enum<\\s*(?:([A-Za-z_][A-Za-z0-9_]*)\\s*:)?\\s*(.+?)\\s*>$").search(elem_type_str)
@@ -284,6 +299,82 @@ func _build_enum_field_info(original_header: String, field_name: String, explici
 		"enum_members": members,
 		"elem_kind": "enum",
 	}
+
+
+## List<Struct(필드1:타입1,필드2:타입2,...)> 를 파싱해서 struct 필드 정보를 구성합니다.
+## 컬럼명 기반으로 struct 클래스 이름을 자동으로 만들고(이름 재사용 문법은 지원하지 않음),
+## 실행마다 STRUCT_DIR에 그 클래스 파일을 덮어써서 시트 정의와 항상 동기화합니다.
+func _build_struct_field_info(original_header: String, field_name: String, raw_member_defs: String) -> Dictionary:
+	var struct_name := _avoid_engine_class_collision(_build_struct_name(field_name))
+	var members := _parse_struct_members(raw_member_defs)
+
+	_write_struct_file(struct_name, members)
+
+	return {
+		"original_header": original_header,
+		"field_name": field_name,
+		"gd_type": "Array[%s]" % struct_name,
+		"default_literal": "[]",
+		"is_array": true,
+		"is_enum": false,
+		"is_struct": true,
+		"struct_name": struct_name,
+		"struct_members": members,
+		"elem_kind": "struct",
+	}
+
+
+## "id:String,weight:int" 같은 문자열을 struct 필드 목록으로 파싱합니다.
+## 각 필드는 {original_header, field_name, gd_type, default_literal, elem_kind} 형태이며,
+## 타입은 스칼라만 지원합니다 (struct 안에 다시 List/Enum을 중첩하는 것은 지원하지 않음).
+func _parse_struct_members(raw_member_defs: String) -> Array:
+	var members: Array = []
+	var m_index := 0
+	for raw_member in raw_member_defs.split(","):
+		var trimmed := String(raw_member).strip_edges()
+		if trimmed.is_empty():
+			continue
+		var parts := trimmed.split(":", true, 1)
+		var member_header := String(parts[0]).strip_edges()
+		var member_type_str := String(parts[1]).strip_edges() if parts.size() > 1 else "string"
+		var member_field_name := _sanitize_identifier(member_header, "field", m_index)
+		var elem_map := _map_scalar_type(member_type_str)
+		members.append({
+			"original_header": member_header,
+			"field_name": member_field_name,
+			"gd_type": elem_map.gd_type,
+			"default_literal": elem_map.default_literal,
+			"elem_kind": elem_map.kind,
+		})
+		m_index += 1
+	return members
+
+
+## struct_name을 ENUM_DIR와 같은 방식(snake_case 파일명)으로 STRUCT_DIR 아래에 저장합니다.
+func _struct_file_path(struct_name: String) -> String:
+	return STRUCT_DIR + _pascal_to_snake_case(struct_name) + ".gd"
+
+
+## 필드명(camelCase/snake_case 모두)을 기반으로 struct 클래스 이름을 만듭니다.
+## 예: "appearableAdverb" -> "AppearableAdverbStruct"
+func _build_struct_name(field_name: String) -> String:
+	if field_name.is_empty():
+		return "ValueStruct"
+	return field_name.substr(0, 1).to_upper() + field_name.substr(1) + "Struct"
+
+
+## struct 클래스 파일을 STRUCT_DIR 아래에 씁니다. Enum과 달리 기존 파일을 보존하지 않고
+## 항상 덮어씁니다 (필드 정의가 타입 문자열에 전부 있어서 "기존 파일 우선" 로직이 필요 없음).
+func _write_struct_file(struct_name: String, members: Array) -> void:
+	var lines: Array[String] = []
+	lines.append("class_name %s" % struct_name)
+	lines.append("extends Resource")
+	lines.append("## 자동 생성된 struct 파일입니다. List<Struct(...)> 필드 정의가 바뀌면 생성 스크립트를 다시 실행해서 갱신하세요.")
+	lines.append("")
+	for member in members:
+		lines.append("@export var %s: %s = %s" % [member.field_name, member.gd_type, member.default_literal])
+
+	_write_file(_struct_file_path(struct_name), "\n".join(lines))
 
 
 ## 두 enum 값 목록이 (순서 포함) 동일한지 비교합니다.
@@ -388,13 +479,13 @@ func _pascal_to_snake_case(name: String) -> String:
 	return out
 
 
-## enum_name이 Godot 엔진의 내장 클래스명(예: "Range", "Node", "Object" 등)과 겹치면
+## class_name이 Godot 엔진의 내장 클래스명(예: "Range", "Node", "Object" 등)과 겹치면
 ## "member shadows a native class" 오류가 나므로, 겹칠 경우 뒤에 "Type"을 붙여 회피합니다.
-## 그래도 겹치면 겹치지 않을 때까지 계속 "Type"을 덧붙입니다.
-func _avoid_engine_class_collision(enum_name: String) -> String:
-	var result := enum_name
+## 그래도 겹치면 겹치지 않을 때까지 계속 "Type"을 덧붙입니다. (enum/struct 이름 둘 다에 사용)
+func _avoid_engine_class_collision(class_name_str: String) -> String:
+	var result := class_name_str
 	while ClassDB.class_exists(result):
-		printerr("경고: enum 이름 '%s' 이(가) Godot 내장 클래스명과 겹쳐서 '%sType' 으로 변경합니다." % [result, result])
+		printerr("경고: 클래스 이름 '%s' 이(가) Godot 내장 클래스명과 겹쳐서 '%sType' 으로 변경합니다." % [result, result])
 		result += "Type"
 	return result
 
@@ -418,7 +509,9 @@ func _map_scalar_type(type_str: String) -> Dictionary:
 ## 배열 필드는 Array[String]처럼 타입이 지정되어 있어서, 일반(untyped) Array를 그대로
 ## set()하면 타입이 안 맞아 에러 없이 조용히 무시됩니다. 그래서 Array 생성자로
 ## 실제 요소 타입을 명시한 typed array를 만들어서 반환합니다.
-func _coerce_value(raw_value: Variant, field: Dictionary) -> Variant:
+func _coerce_value(raw_value: Variant, field: Dictionary, row_instance: Resource) -> Variant:
+	if field.get("is_struct", false):
+		return _coerce_struct_array(raw_value, field, row_instance)
 	if field.is_array:
 		var out: Array = []
 		if typeof(raw_value) == TYPE_ARRAY:
@@ -426,6 +519,27 @@ func _coerce_value(raw_value: Variant, field: Dictionary) -> Variant:
 				out.append(_coerce_single_by_field(v, field))
 		return _make_typed_array(out, field.elem_kind)
 	return _coerce_single_by_field(raw_value, field)
+
+
+## JSON의 [{"id": "fast", "weight": 1}, ...] 형태 배열을 struct 인스턴스 배열로 변환합니다.
+## row_instance의 해당 필드가 이미 "Array[StructName] = []"로 선언되어 있어서, 그 기본값
+## 자체가 GDScript 컴파일러가 만들어준 정확한 타입의 빈 배열입니다. 수동으로 Array(...)를
+## 다시 만들면 @export가 기대하는 타입과 안 맞아 set()이 조용히 무시될 수 있으므로,
+## 그 기본값을 그대로 가져와 append()만 해서(타입 배열 자체 검증을 그대로 타게) 채웁니다.
+func _coerce_struct_array(raw_value: Variant, field: Dictionary, row_instance: Resource) -> Array:
+	var struct_script: Script = load(_struct_file_path(field.struct_name))
+	var out: Array = row_instance.get(field.field_name)
+	if typeof(raw_value) == TYPE_ARRAY:
+		for item in (raw_value as Array):
+			if typeof(item) != TYPE_DICTIONARY:
+				continue
+			var item_dict: Dictionary = item
+			var instance: Resource = struct_script.new()
+			for member in field.struct_members:
+				var raw_member_value: Variant = item_dict.get(member.original_header, null)
+				instance.set(member.field_name, _coerce_scalar(raw_member_value, member.elem_kind))
+			out.append(instance)
+	return out
 
 
 ## values를 field의 elem_kind에 맞는 typed Array로 다시 만들어서 반환합니다.
@@ -495,17 +609,23 @@ func _build_resource_script_text(class_name_str: String, fields: Array) -> Strin
 	lines.append("## 자동 생성된 파일입니다. Google Sheets 구조가 바뀌면 생성 스크립트를 다시 실행해서 갱신하세요.")
 	lines.append("")
 
-	# --- 사용하는 enum 파일들을 preload (같은 enum이 여러 필드에 쓰여도 한 번만) ---
+	# --- 사용하는 enum/struct 파일들을 preload (같은 것이 여러 필드에 쓰여도 한 번만) ---
 	var seen_enums: Dictionary = {}
+	var seen_structs: Dictionary = {}
 	for field in fields:
-		if not field.get("is_enum", false):
-			continue
-		var enum_name: String = field.enum_name
-		if seen_enums.has(enum_name):
-			continue
-		seen_enums[enum_name] = true
-		lines.append("const %s = preload(\"%s\")" % [enum_name, _enum_file_path(enum_name)])
-	if not seen_enums.is_empty():
+		if field.get("is_enum", false):
+			var enum_name: String = field.enum_name
+			if seen_enums.has(enum_name):
+				continue
+			seen_enums[enum_name] = true
+			lines.append("const %s = preload(\"%s\")" % [enum_name, _enum_file_path(enum_name)])
+		elif field.get("is_struct", false):
+			var struct_name: String = field.struct_name
+			if seen_structs.has(struct_name):
+				continue
+			seen_structs[struct_name] = true
+			lines.append("const %s = preload(\"%s\")" % [struct_name, _struct_file_path(struct_name)])
+	if not seen_enums.is_empty() or not seen_structs.is_empty():
 		lines.append("")
 
 	# --- @export 필드 ---
@@ -519,6 +639,11 @@ func _build_resource_script_text(class_name_str: String, fields: Array) -> Strin
 			for member in field.enum_members:
 				symbol_list.append(String(member.symbol))
 			lines.append("## 값 목록 (%s): %s" % [_enum_file_path(field.enum_name), ", ".join(symbol_list)])
+		elif field.get("is_struct", false):
+			var member_desc_list: Array = []
+			for member in field.struct_members:
+				member_desc_list.append("%s: %s" % [member.field_name, member.gd_type])
+			lines.append("## Struct 필드 (%s): %s" % [_struct_file_path(field.struct_name), ", ".join(member_desc_list)])
 		lines.append("@export var %s: %s = %s" % [field.field_name, field.gd_type, field.default_literal])
 		lines.append("")
 

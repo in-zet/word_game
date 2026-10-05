@@ -1,6 +1,18 @@
-[gd_resource type="Resource" script_class="PatternDataResource" format=3 uid="uid://x44tiovl0j2j"]
+[gd_resource type="Resource" script_class="PatternDataResource" format=3 uid="uid://dh77prk616ffc"]
 
 [ext_resource type="Script" uid="uid://dhv7peddn5rxn" path="res://scripts/custom_resources/PatternDataResource.gd" id="1_m2mdm"]
+[ext_resource type="Script" uid="uid://bkwvi6hpwrr5q" path="res://scripts/structs/appearable_adverb_struct.gd" id="1_uua7f"]
+[ext_resource type="Script" uid="uid://bgyh5xk7240a8" path="res://scripts/structs/appearable_verb_struct.gd" id="2_fa3qs"]
+
+[sub_resource type="Resource" id="Resource_t0e8u"]
+script = ExtResource("1_uua7f")
+id = "fast"
+weight = 1
+
+[sub_resource type="Resource" id="Resource_xlqqw"]
+script = ExtResource("2_fa3qs")
+id = "hit"
+weight = 1
 
 [resource]
 script = ExtResource("1_m2mdm")
@@ -8,8 +20,6 @@ PatternID = "GoblinPattern2"
 basicLineSubject = "고블린"
 basicLineVerbID = "hit"
 adverbAppearRate = 0.5
-appearableAdverbID = Array[String](["fast"])
-appearableAdverbWeight = Array[int]([1])
+appearableAdverb = Array[ExtResource("1_uua7f")]([SubResource("Resource_t0e8u")])
 verbAppearRate = 0.5
-appearableVerbID = Array[String](["hit"])
-appearableVerbWeight = Array[int]([1])
+appearableVerb = Array[ExtResource("2_fa3qs")]([SubResource("Resource_xlqqw")])

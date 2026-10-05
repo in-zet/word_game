@@ -1,12 +1,18 @@
 [gd_resource type="Resource" script_class="PatternDataResource" format=3 uid="uid://dtd1l72h5kag5"]
 
-[ext_resource type="Script" uid="uid://dhv7peddn5rxn" path="res://scripts/custom_resources/PatternDataResource.gd" id="1_j5hkj"]
+[ext_resource type="Script" uid="uid://bkwvi6hpwrr5q" path="res://scripts/structs/appearable_adverb_struct.gd" id="1_hap4f"]
+[ext_resource type="Script" uid="uid://bgyh5xk7240a8" path="res://scripts/structs/appearable_verb_struct.gd" id="2_fxlk6"]
+[ext_resource type="Script" uid="uid://dhv7peddn5rxn" path="res://scripts/custom_resources/PatternDataResource.gd" id="3_v1gnf"]
+
+[sub_resource type="Resource" id="Resource_d5ygn"]
+script = ExtResource("1_hap4f")
+id = "강하게"
+weight = 1
 
 [resource]
-script = ExtResource("1_j5hkj")
+script = ExtResource("3_v1gnf")
 PatternID = "OrcPattern2"
 basicLineSubject = "오크"
 basicLineVerbID = "smash"
 adverbAppearRate = 1.0
-appearableAdverbID = Array[String](["강하게"])
-appearableAdverbWeight = Array[int]([1])
+appearableAdverb = Array[ExtResource("1_hap4f")]([SubResource("Resource_d5ygn")])

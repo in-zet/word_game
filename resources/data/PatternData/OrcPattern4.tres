@@ -1,15 +1,25 @@
 [gd_resource type="Resource" script_class="PatternDataResource" format=3 uid="uid://b77m4vf4aaea5"]
 
-[ext_resource type="Script" uid="uid://dhv7peddn5rxn" path="res://scripts/custom_resources/PatternDataResource.gd" id="1_ho4kw"]
+[ext_resource type="Script" uid="uid://bkwvi6hpwrr5q" path="res://scripts/structs/appearable_adverb_struct.gd" id="1_hk0ml"]
+[ext_resource type="Script" uid="uid://bgyh5xk7240a8" path="res://scripts/structs/appearable_verb_struct.gd" id="2_voxlo"]
+[ext_resource type="Script" uid="uid://dhv7peddn5rxn" path="res://scripts/custom_resources/PatternDataResource.gd" id="3_8mhg1"]
+
+[sub_resource type="Resource" id="Resource_4qs7e"]
+script = ExtResource("1_hk0ml")
+id = "조롱하며"
+weight = 1
+
+[sub_resource type="Resource" id="Resource_x5wkv"]
+script = ExtResource("2_voxlo")
+id = "smash"
+weight = 1
 
 [resource]
-script = ExtResource("1_ho4kw")
+script = ExtResource("3_8mhg1")
 PatternID = "OrcPattern4"
 basicLineSubject = "오크"
 basicLineVerbID = "taunt"
 adverbAppearRate = 0.8
-appearableAdverbID = Array[String](["조롱하며"])
-appearableAdverbWeight = Array[int]([1])
+appearableAdverb = Array[ExtResource("1_hk0ml")]([SubResource("Resource_4qs7e")])
 verbAppearRate = 1.0
-appearableVerbID = Array[String](["smash"])
-appearableVerbWeight = Array[int]([1])
+appearableVerb = Array[ExtResource("2_voxlo")]([SubResource("Resource_x5wkv")])

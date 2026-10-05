@@ -5,3 +5,5 @@
 [resource]
 script = ExtResource("1_kfvfp")
 skillID = "hit"
+verbID = "hit"
+cooldown = 2

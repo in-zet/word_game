@@ -5,4 +5,6 @@
 [resource]
 script = ExtResource("1_g04y6")
 adverbID = "머뭇거리며"
+adverbType = 4
 coefficient = -0.2
+modifyRange = 1
