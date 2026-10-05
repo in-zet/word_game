@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_chop")
 verbID = "chop"
-statBonusType = 1
+statBonusType = 0
 statBonusValue = 1.0
 coolDownTurn = 1

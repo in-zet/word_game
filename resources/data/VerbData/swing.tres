@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_swing")
 verbID = "swing"
-statBonusType = 1
+statBonusType = 0
 statBonusValue = 1.2
 coolDownTurn = 2

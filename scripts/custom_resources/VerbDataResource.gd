@@ -8,8 +8,8 @@ const StatType = preload("res://scripts/enums/stat_type.gd")
 @export var verbID: String = ""
 
 ## 적용되는 능력치 (원본 컬럼: statBonusType)
-## 값 목록 (res://scripts/enums/stat_type.gd): NONE
-@export var statBonusType: StatType.Value = StatType.Value.NONE
+## 값 목록 (res://scripts/enums/stat_type.gd): STR, DEX, INT, CHA
+@export var statBonusType: StatType.Value = StatType.Value.STR
 
 ## 적용 능력치 계수 (원본 컬럼: statBonusValue)
 @export var statBonusValue: float = 0.0

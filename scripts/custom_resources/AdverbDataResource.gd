@@ -9,15 +9,15 @@ const RangeType = preload("res://scripts/enums/range_type.gd")
 @export var adverbID: String = ""
 
 ## 부사어 Type (원본 컬럼: adverbType)
-## 값 목록 (res://scripts/enums/adverb_type.gd): NONE
+## 값 목록 (res://scripts/enums/adverb_type.gd): NONE, TRUE_DAMAGE, PERCENT_POINT, EFFECT, PATTERN_MOD, CRIT_RATE
 @export var adverbType: AdverbType.Value = AdverbType.Value.NONE
 
 ## 적용 계수 (원본 컬럼: coefficient)
 @export var coefficient: float = 0.0
 
 ## 수식 범위 (원본 컬럼: modifyRange)
-## 값 목록 (res://scripts/enums/range_type.gd): NONE
-@export var modifyRange: RangeType.Value = RangeType.Value.NONE
+## 값 목록 (res://scripts/enums/range_type.gd): TEXT, LINE
+@export var modifyRange: RangeType.Value = RangeType.Value.TEXT
 
 ## 중복 불가 부사어 ID (원본 컬럼: conflictingAdverb)
 @export var conflictingAdverb: Array[String] = []

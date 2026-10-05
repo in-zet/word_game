@@ -19,7 +19,7 @@ func _run() -> void:
 	var p := Combatant.new("플레이어", 100, 12, 10, 100)
 	t.check("STR 조회", p.stat_value(StatType.Value.STR), 12)
 	t.check("DEX 조회", p.stat_value(StatType.Value.DEX), 10)
-	t.check("NONE 조회는 0", p.stat_value(StatType.Value.NONE), 0)
+	t.check("미구현 스탯 조회는 0", p.stat_value(StatType.Value.INT), 0)
 
 	t.check("쿨타임 없으면 사용 가능", p.is_action_ready("attack"), true)
 	p.start_cooldown("attack", 2)
